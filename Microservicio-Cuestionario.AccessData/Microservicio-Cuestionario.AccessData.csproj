@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Microservicio_Cuestionario</RootNamespace>
+    <RootNamespace>Microservicio_Cuestionario.AccessData</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microservicio-Cuestionario.AccessData\Microservicio-Cuestionario.AccessData.csproj" />
     <ProjectReference Include="..\Microservicio-Cuestionario.Aplication\Microservicio-Cuestionario.Application.csproj" />
+    <ProjectReference Include="..\Microservicio-Cuestionario.Domain\Microservicio-Cuestionario.Domain.csproj" />
   </ItemGroup>
 
 </Project>
