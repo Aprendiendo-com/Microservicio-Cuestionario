@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
     [DbContext(typeof(GenericContext))]
-    [Migration("20200917042834_CuestionarioMigration")]
+    [Migration("20200918153418_CuestionarioMigration")]
     partial class CuestionarioMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
