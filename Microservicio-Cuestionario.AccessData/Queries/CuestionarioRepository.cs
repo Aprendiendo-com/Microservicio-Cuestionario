@@ -7,7 +7,7 @@ using Microservicio_Cuestionario.Domain.Queries;
 
 namespace Microservicio_Cuestionario.AccessData.Queries
 {
-    class CuestionarioRepository : GenericRepository, ICuestionarioRepository
+    public class CuestionarioRepository : GenericRepository, ICuestionarioRepository
     {
         public CuestionarioRepository(GenericContext contexto) : base(contexto)
         {

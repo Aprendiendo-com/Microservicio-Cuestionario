@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Microservicio_Cuestionario.AccessData.Command
 {
-    class GenericRepository : IRepository
+    public class GenericRepository : IRepository
     {
         protected GenericContext Context;
         public GenericRepository(GenericContext contexto)
@@ -16,10 +16,12 @@ namespace Microservicio_Cuestionario.AccessData.Command
             this.Context = contexto;
         }
         
-        public void Add<T>(T entity) where T : class
+        public T Add<T>(T entity) where T : class
         {
             Context.Set<T>().Add(entity);
             Context.SaveChanges();
+
+            return entity;
         }
 
         public void Delete<T>(T entity) where T : class

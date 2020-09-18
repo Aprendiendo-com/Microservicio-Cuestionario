@@ -10,6 +10,11 @@ namespace Microservicio_Cuestionario.Aplication.Services.Base
     {
         protected IRepository Repository;
 
+        public GenericService(IRepository repository)
+        {
+            this.Repository = repository;
+        }
+
         public void Add<T>(T entity) where T : class
         {
             Repository.Add(entity);

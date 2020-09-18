@@ -8,6 +8,8 @@ namespace Microservicio_Cuestionario.AccessData.Context
 {
     public class GenericContext : DbContext
     {
+        public virtual DbSet<Cuestionario> Cuestionarios { get; set; }
+        public virtual DbSet<Registro> Registros { get; set; }
         public GenericContext() { }
 
 
@@ -45,7 +47,6 @@ namespace Microservicio_Cuestionario.AccessData.Context
 
         }
 
-        public virtual DbSet<Cuestionario> Cuestionarios { get; set; }
-        public virtual DbSet<Registro> Registros { get; set; }
+        
     }
 }
