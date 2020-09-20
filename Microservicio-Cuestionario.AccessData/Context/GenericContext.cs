@@ -31,6 +31,7 @@ namespace Microservicio_Cuestionario.AccessData.Context
 
                 entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
                 entity.Property(q => q.Calificacion).IsRequired();
+
             }
             );
             modelBuilder.Entity<Registro>(entity =>
@@ -42,6 +43,33 @@ namespace Microservicio_Cuestionario.AccessData.Context
                 entity.HasOne(q => q.Cuestionario)
                 .WithMany(q => q.Registros)
                 .HasForeignKey(q => q.CuestionarioId);
+            }
+            );
+
+            modelBuilder.Entity<Pregunta>(entity =>
+            {
+                entity.HasKey(q => q.PreguntaId);
+                entity.HasKey(q => q.CuestionarioId);
+
+                entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
+
+                entity.HasOne(q => q.CuestionarioNavegator)
+                .WithMany(q => q.PreguntaNavegator)
+                .HasForeignKey(q => q.CuestionarioId);
+                
+            }
+            );
+
+            modelBuilder.Entity<Respuesta>(entity =>
+            {
+                entity.HasKey(q => q.RespuestaId);
+
+                entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
+                entity.Property(q => q.PreguntaId).IsRequired();
+
+                entity.HasOne(q => q.PreguntaNavegator)
+                .WithOne(q => q.RespuestaNavegator);
+                //.HasForeignKey(q => q.);
             }
             );
 

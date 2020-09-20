@@ -57,5 +57,49 @@ namespace Microservicio_Cuestionario.Aplication.Services
             };
             this.Repository.Update(cuestionario);
         }
+
+
+
+        //Modificado
+        
+        public void DeleteCuestionario(CuestionarioDTO cuestionarioDTO)
+        { //Se crea un cuestionario con el DTO recibido y lo borra
+            var cuestionario = new Domain.Entities.Cuestionario()
+            {
+                Calificacion = cuestionarioDTO.Calificacion,
+                Descripcion = cuestionarioDTO.Descripcion
+            };
+            this.Repository.Delete(cuestionario);
+        }
+        public CuestionarioDTO FindCuestionarioById (int id)
+        {
+            var cuestionarios = this.Repository.Traer<Domain.Entities.Cuestionario>();
+
+            var cuestionarioDTO = new CuestionarioDTO();
+
+            foreach (var cuestionario in cuestionarios)
+            {
+                if (cuestionario.CuestionarioID == id) {
+
+                    cuestionarioDTO.Descripcion = cuestionario.Descripcion;
+                    cuestionarioDTO.Calificacion = cuestionario.Calificacion;
+
+                }
+            }
+            return cuestionarioDTO;
+        }
+
+        public void DeleteCuestionarioById(int id)
+        {
+            var cuestionarios = this.Repository.Traer<Domain.Entities.Cuestionario>();
+
+            foreach (var cuestionario in cuestionarios)
+            {
+                if (cuestionario.CuestionarioID == id)
+                {
+                    this.Repository.Delete(cuestionario);
+                }
+            }
+        }
     }
 }

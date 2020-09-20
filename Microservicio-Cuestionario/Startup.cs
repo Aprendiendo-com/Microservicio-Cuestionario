@@ -54,6 +54,10 @@ namespace Microservicio_Cuestionario
             services.AddScoped<ICuestionarioService, CuestionarioService>();
             services.AddScoped<ICuestionarioRepository, CuestionarioRepository>();
 
+            //Modificado
+            services.AddScoped<IRegistroService, RegistroService>();
+            services.AddScoped<IRegistroRepository, RegistroRepository>();
+
             services.AddDbContext<GenericContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
         }
