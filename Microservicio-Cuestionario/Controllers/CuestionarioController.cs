@@ -59,6 +59,52 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+
+
+        //Modificado
+        [HttpDelete]
+        public IActionResult Delete(CuestionarioDTO cuestionarioDto)
+        {
+            try
+            {
+                service.DeleteCuestionario(cuestionarioDto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
+        [HttpDelete("DeleteById")]
+        public IActionResult DeleteBy(int id)
+        {
+            try
+            {
+                service.DeleteCuestionarioById(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("FindById")]
+        public IActionResult FindBy(int id)
+        {
+            try
+            {
+                return new JsonResult(service.FindCuestionarioById(id)) { StatusCode = 200 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
+    //add-get-delete-update
 
 }

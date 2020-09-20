@@ -11,5 +11,6 @@ namespace Microservicio_Cuestionario.Domain.Entities
         public float Calificacion { get; set; }
 
         public ICollection<Registro> Registros { get; set; }
+        public ICollection<Pregunta> PreguntaNavegator { get; set; }
     }
 }

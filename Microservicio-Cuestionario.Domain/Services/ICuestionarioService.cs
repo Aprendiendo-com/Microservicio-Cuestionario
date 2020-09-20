@@ -12,5 +12,12 @@ namespace Microservicio_Cuestionario.Domain.Services
         CuestionarioRespuestaDTO AddCuestionario(CuestionarioDTO cuestionarioDTO);
         List<CuestionarioDTO> GetAll();
         void Update(CuestionarioDTO cuestionarioDTO);
+
+
+        //Modificado
+        void DeleteCuestionario(CuestionarioDTO cuestionarioDTO);
+        CuestionarioDTO FindCuestionarioById(int id);
+        void DeleteCuestionarioById(int id);
+
     }
 }
