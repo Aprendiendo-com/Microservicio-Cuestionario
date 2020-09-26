@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 using Microservicio_Cuestionario.Domain.Command.BaseRepository;
 using Microservicio_Cuestionario.Domain.Command.BaseServices;
 
@@ -9,10 +10,12 @@ namespace Microservicio_Cuestionario.Aplication.Services.Base
     public class GenericService : IService
     {
         protected IRepository Repository;
+        protected IMapper _mapper;
 
-        public GenericService(IRepository repository)
+        public GenericService(IRepository repository, IMapper mapper)
         {
             this.Repository = repository;
+            this._mapper = mapper;
         }
 
         public void Add<T>(T entity) where T : class

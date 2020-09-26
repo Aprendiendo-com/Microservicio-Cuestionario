@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
     [DbContext(typeof(GenericContext))]
-    [Migration("20200918153418_CuestionarioMigration")]
-    partial class CuestionarioMigration
+    [Migration("20200922035006_creation")]
+    partial class creation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,28 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                     b.ToTable("Cuestionarios");
                 });
 
+            modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Pregunta", b =>
+                {
+                    b.Property<int>("PreguntaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CuestionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.HasKey("PreguntaId");
+
+                    b.HasIndex("CuestionarioId");
+
+                    b.ToTable("Preguntas");
+                });
+
             modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Registro", b =>
                 {
                     b.Property<int>("RegistroId")
@@ -60,11 +82,52 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                     b.ToTable("Registros");
                 });
 
+            modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Respuesta", b =>
+                {
+                    b.Property<int>("RespuestaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<int>("PreguntaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RespuestaId");
+
+                    b.HasIndex("PreguntaId")
+                        .IsUnique();
+
+                    b.ToTable("Respuestas");
+                });
+
+            modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Pregunta", b =>
+                {
+                    b.HasOne("Microservicio_Cuestionario.Domain.Entities.Cuestionario", "CuestionarioNavegator")
+                        .WithMany("PreguntaNavegator")
+                        .HasForeignKey("CuestionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Registro", b =>
                 {
                     b.HasOne("Microservicio_Cuestionario.Domain.Entities.Cuestionario", "Cuestionario")
                         .WithMany("Registros")
                         .HasForeignKey("CuestionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Respuesta", b =>
+                {
+                    b.HasOne("Microservicio_Cuestionario.Domain.Entities.Pregunta", "PreguntaNavegator")
+                        .WithOne("RespuestaNavegator")
+                        .HasForeignKey("Microservicio_Cuestionario.Domain.Entities.Respuesta", "PreguntaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

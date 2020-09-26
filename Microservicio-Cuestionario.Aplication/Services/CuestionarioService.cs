@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 using Microservicio_Cuestionario.Aplication.Services.Base;
 using Microservicio_Cuestionario.Domain.DTO;
+using Microservicio_Cuestionario.Domain.DTO.DTOResponse;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Queries;
 using Microservicio_Cuestionario.Domain.Services;
@@ -11,50 +13,33 @@ namespace Microservicio_Cuestionario.Aplication.Services
 {
     public class CuestionarioService : GenericService, ICuestionarioService
     {
-        public CuestionarioService(ICuestionarioRepository repository):base(repository)
+        public CuestionarioService(ICuestionarioRepository repository, IMapper mapper):base(repository, mapper)
         {
 
         }
 
         public CuestionarioRespuestaDTO AddCuestionario(CuestionarioDTO cuestionarioDTO)
         {
-            var cuestionario = new Domain.Entities.Cuestionario()
-            {
-                Descripcion = cuestionarioDTO.Descripcion,
-                Calificacion = cuestionarioDTO.Calificacion
-            };
+            var cuestionario = this._mapper.Map<Cuestionario>(cuestionarioDTO);
 
-            var respuesta = Repository.Add(cuestionario);
+            var cuestionarioDb = Repository.Add(cuestionario);
 
-            return new CuestionarioRespuestaDTO() { CuestionarioID = respuesta.CuestionarioID };
+            return this._mapper.Map<CuestionarioRespuestaDTO>(cuestionarioDb);
         }
 
-        public List<CuestionarioDTO> GetAll()
+        public List<CuestionarioGetDTO> GetAll()
         {
-            var cuestionarios = this.Repository.Traer<Domain.Entities.Cuestionario>();
+            var cuestionarios = this.Repository.Traer<Cuestionario>();
 
-            var cuestionariosDTO = new List<CuestionarioDTO>();
+            var cuestionariosDTO = this._mapper.Map<List<CuestionarioGetDTO>>(cuestionarios);
 
-            foreach (var c in cuestionarios)
-            {
-                var dto = new CuestionarioDTO()
-                {
-                    Descripcion = c.Descripcion,
-                    Calificacion = c.Calificacion
-                };
-
-                cuestionariosDTO.Add(dto);
-            }
             return cuestionariosDTO;
         }
 
-        public void Update(CuestionarioDTO cuestionarioDTO)
+        public void Update(CuestionarioUpdateDTO cuestionarioUpdateDTO)
         {
-            var cuestionario = new Domain.Entities.Cuestionario()
-            {
-                Calificacion = cuestionarioDTO.Calificacion,
-                Descripcion = cuestionarioDTO.Descripcion
-            };
+            var cuestionario = this._mapper.Map<Cuestionario>(cuestionarioUpdateDTO);
+
             this.Repository.Update(cuestionario);
         }
 

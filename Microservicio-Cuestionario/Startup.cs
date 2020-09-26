@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microservicio_Cuestionario.AccessData.Context;
 using Microservicio_Cuestionario.AccessData.Queries;
 using Microservicio_Cuestionario.Aplication.Services;
@@ -49,6 +50,14 @@ namespace Microservicio_Cuestionario
                 });
             });
 
+            var mapConfig = new MapperConfiguration(mc =>
+               mc.AddProfile(new AutoMappingProfile())
+               ) ;
+
+            IMapper mapper = mapConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+
             //services.AddScoped(typeof(ICuestionarioService), typeof(Cuestionario));
             //services.AddScoped(typeof(ICuestionarioRepository), typeof(CuestionarioRepository));
             services.AddScoped<ICuestionarioService, CuestionarioService>();
@@ -57,6 +66,12 @@ namespace Microservicio_Cuestionario
             //Modificado
             services.AddScoped<IRegistroService, RegistroService>();
             services.AddScoped<IRegistroRepository, RegistroRepository>();
+
+            services.AddScoped<IPreguntaService, PreguntaService>();
+            services.AddScoped<IPreguntaRepository, PreguntaRepository>();
+
+            services.AddScoped<IRepuestaService, RepuestaService>();
+            services.AddScoped<IRespuestaRepository, RepuestaRepository>();
 
             services.AddDbContext<GenericContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
