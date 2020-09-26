@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Microservicio_Cuestionario.Domain.DTO
 {
-    public class RegistroDTO
+    public class PreguntaUpdateDto
     {
-        public int EstudianteId { get; set; }
+        public int PreguntaId { get; set; }
+        public string Descripcion { get; set; }
         public int CuestionarioId { get; set; }
     }
 }

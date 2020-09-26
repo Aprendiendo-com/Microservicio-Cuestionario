@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microservicio_Cuestionario.Domain.Command.BaseServices;
 using Microservicio_Cuestionario.Domain.DTO;
+using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.Entities;
 
 namespace Microservicio_Cuestionario.Domain.Services
@@ -11,11 +12,11 @@ namespace Microservicio_Cuestionario.Domain.Services
     {
         //cuest respuesta
 
-        RegistroRespuestaDTO AddRegistro(RegistroDTO registroDTO);
+        RegistroRespuestaDTO AddRegistro(RegistroAddDTO registroDTO);
         List<RegistroDTO> GetAll();
 
-        void DeleteRegistroById(int id);
-        void Update(RegistroDTO registroDTO);
+        //void DeleteRegistroById(int id);
+        //void Update(RegistroDTO registroDTO);
 
 
     }

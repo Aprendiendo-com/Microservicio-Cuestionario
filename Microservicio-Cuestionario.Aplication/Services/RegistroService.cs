@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 using Microservicio_Cuestionario.Aplication.Services.Base;
 using Microservicio_Cuestionario.Domain.DTO;
+using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Queries;
 using Microservicio_Cuestionario.Domain.Services;
@@ -11,63 +13,54 @@ namespace Microservicio_Cuestionario.Aplication.Services
 {
     public class RegistroService : GenericService, IRegistroService
     {
-        public RegistroService(IRegistroRepository repository) : base(repository)
+        public RegistroService(IRegistroRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }
 
-        public RegistroRespuestaDTO AddRegistro(RegistroDTO registroDTO)
+        public RegistroRespuestaDTO AddRegistro(RegistroAddDTO  registroAddDTO)
         {
-            var registro = new Domain.Entities.Registro()
-            {
-                EstudianteId = registroDTO.EstudianteId,
-                CuestionarioId = registroDTO.CuestionarioId
-            };
+            var registro = this._mapper.Map<Registro>(registroAddDTO);
 
             var respuesta = Repository.Add(registro);
 
-            return new RegistroRespuestaDTO() { RegistroId = respuesta.RegistroId };
+
+            return this._mapper.Map<RegistroRespuestaDTO>(respuesta);
         }
         public List<RegistroDTO> GetAll()
         {
             var registros = this.Repository.Traer<Domain.Entities.Registro>();
 
-            var registrosDTO = new List<RegistroDTO>();
+            var dto = this._mapper.Map<List<RegistroDTO>>(registros);
 
-            foreach (var reg in registros)
-            {
-                var dto = new RegistroDTO()
-                {
-                    EstudianteId = reg.EstudianteId,
-                    CuestionarioId = reg.CuestionarioId
-                };
-
-                registrosDTO.Add(dto);
-            }
-            return registrosDTO;
+            return dto;
         }
 
-        public void Update(RegistroDTO registroDTO)
-        {
-            var registro = new Domain.Entities.Registro()
-            {
-                EstudianteId = registroDTO.EstudianteId,
-                CuestionarioId = registroDTO.CuestionarioId
-            };
-            this.Repository.Update(registro);
-        }
+        //public void Update(RegistroDTO registroDTO)// crear un dto para actualizar un registro
+        //{
+        //    var registro = new Domain.Entities.Registro()
+        //    {
+        //        EstudianteId = registroDTO.EstudianteId,
+        //        CuestionarioId = registroDTO.CuestionarioId
+        //    };
+        //    this.Repository.Update(registro);
+        //}
 
-        public void DeleteRegistroById(int id)
-        {
-            var registros = this.Repository.Traer<Domain.Entities.Registro>();
+        //public void DeleteRegistroById(int id)
+        //{
+        //    // aca podes hacer esto simplemente
 
-            foreach (var registro in registros)
-            {
-                if (registro.RegistroId == id)
-                {
-                    this.Repository.Delete(registro);
-                }
-            }
-        }
+        //    //this.Repository.DeleteBy<Registro>(id);    hace lo mismo que esta abajo
+
+        //    var registros = this.Repository.Traer<Domain.Entities.Registro>();
+
+        //    foreach (var registro in registros)
+        //    {
+        //        if (registro.RegistroId == id)
+        //        {
+        //            this.Repository.Delete(registro);
+        //        }
+        //    }
+        //}
     }
 }

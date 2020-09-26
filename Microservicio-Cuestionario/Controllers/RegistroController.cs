@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microservicio_Cuestionario.Domain.DTO;
+using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace Microservicio_Cuestionario.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(RegistroDTO registroDTO)
+        public IActionResult Add(RegistroAddDTO registroDTO)
         {
             try
             {
@@ -33,19 +34,19 @@ namespace Microservicio_Cuestionario.Controllers
             }
         }
         
-        [HttpPut]
-        public IActionResult Edit(RegistroDTO registroDTO)
-        {
-            try
-            {
-                service.Update(registroDTO);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[HttpPut]
+        //public IActionResult Edit(RegistroDTO registroDTO)
+        //{
+        //    try
+        //    {
+        //        service.Update(registroDTO);
+        //        return Ok();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
         [HttpGet]
         public IActionResult GetAll()
@@ -60,19 +61,19 @@ namespace Microservicio_Cuestionario.Controllers
             }
         }
 
-        [HttpDelete("DeleteById")]
-        public IActionResult DeleteBy(int id)
-        {
-            try
-            {
-                service.DeleteRegistroById(id);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[HttpDelete("DeleteById")]
+        //public IActionResult DeleteBy(int id)
+        //{
+        //    try
+        //    {
+        //        service.DeleteRegistroById(id);
+        //        return Ok();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
         
 
     }
