@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microservicio_Cuestionario.Domain.DTO;
+using Microservicio_Cuestionario.Domain.DTO.CuestionariosDTO.DTORequest;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,22 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        //modificado
+        
+        [HttpPost("AddCompleto")]
+        public IActionResult AddCompleto(CuestionarioTodoDTO cuestionarioTodoDto)
+        {
+            try
+            {
+                return new JsonResult(service.AddCuestionario(cuestionarioTodoDto)) { StatusCode = 201 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
 
         [HttpPut]
         public IActionResult Edit(CuestionarioUpdateDTO cuestionarioUpdateDTO)
