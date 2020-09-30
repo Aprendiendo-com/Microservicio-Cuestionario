@@ -22,9 +22,9 @@ namespace Microservicio_Cuestionario.Aplication.Services
         {
             var pregunta = this._mapper.Map<Pregunta>(preguntaDTO);
 
-            var preguntaDb = this.Repository.Add(pregunta);
+            this.Repository.Add(pregunta);
 
-            return this._mapper.Map<PreguntaRespuestaDTO>(preguntaDb);
+            return this._mapper.Map<PreguntaRespuestaDTO>(pregunta);
         }
 
         public void Delete(int id)

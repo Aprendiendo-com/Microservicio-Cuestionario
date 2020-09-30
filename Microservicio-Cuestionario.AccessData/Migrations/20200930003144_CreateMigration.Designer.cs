@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
     [DbContext(typeof(GenericContext))]
-    [Migration("20200922035006_creation")]
-    partial class creation
+    [Migration("20200930003144_CreateMigration")]
+    partial class CreateMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,6 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("Calificacion")
-                        .HasColumnType("real");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -69,6 +66,9 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<float>("Calificacion")
+                        .HasColumnType("real");
+
                     b.Property<int>("CuestionarioId")
                         .HasColumnType("int");
 
@@ -94,13 +94,15 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
+                    b.Property<bool>("Flag")
+                        .HasColumnType("bit");
+
                     b.Property<int>("PreguntaId")
                         .HasColumnType("int");
 
                     b.HasKey("RespuestaId");
 
-                    b.HasIndex("PreguntaId")
-                        .IsUnique();
+                    b.HasIndex("PreguntaId");
 
                     b.ToTable("Respuestas");
                 });
@@ -126,8 +128,8 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
             modelBuilder.Entity("Microservicio_Cuestionario.Domain.Entities.Respuesta", b =>
                 {
                     b.HasOne("Microservicio_Cuestionario.Domain.Entities.Pregunta", "PreguntaNavegator")
-                        .WithOne("RespuestaNavegator")
-                        .HasForeignKey("Microservicio_Cuestionario.Domain.Entities.Respuesta", "PreguntaId")
+                        .WithMany("RespuestaNavegator")
+                        .HasForeignKey("PreguntaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

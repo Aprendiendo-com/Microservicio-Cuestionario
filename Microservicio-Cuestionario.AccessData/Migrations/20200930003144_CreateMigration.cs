@@ -2,7 +2,7 @@
 
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
-    public partial class creation : Migration
+    public partial class CreateMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,7 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                 {
                     CuestionarioID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(maxLength: 250, nullable: false),
-                    Calificacion = table.Column<float>(nullable: false)
+                    Descripcion = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,7 +46,8 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                     RegistroId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EstudianteId = table.Column<int>(nullable: false),
-                    CuestionarioId = table.Column<int>(nullable: false)
+                    CuestionarioId = table.Column<int>(nullable: false),
+                    Calificacion = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,8 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                     RespuestaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descripcion = table.Column<string>(maxLength: 250, nullable: false),
-                    PreguntaId = table.Column<int>(nullable: false)
+                    PreguntaId = table.Column<int>(nullable: false),
+                    Flag = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,8 +94,7 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Respuestas_PreguntaId",
                 table: "Respuestas",
-                column: "PreguntaId",
-                unique: true);
+                column: "PreguntaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

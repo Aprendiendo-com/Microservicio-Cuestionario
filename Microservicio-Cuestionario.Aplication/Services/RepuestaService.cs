@@ -23,9 +23,9 @@ namespace Microservicio_Cuestionario.Aplication.Services
         {
             var respuesta = this._mapper.Map<Respuesta>(repuestaDTO);
 
-            var respuestaDb = this.Repository.Add(respuesta);
+            this.Repository.Add(respuesta);
 
-            return this._mapper.Map<RespuestaAddDTO>(respuestaDb);
+            return this._mapper.Map<RespuestaAddDTO>(respuesta);
         }
 
         public void Edit(RespuestaUpdateDTO respuestaUpdateDTO)
