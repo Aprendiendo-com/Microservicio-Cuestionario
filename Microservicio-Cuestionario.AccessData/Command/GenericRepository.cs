@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Microservicio_Cuestionario.AccessData.Context;
 using Microservicio_Cuestionario.Domain.Command.BaseRepository;
@@ -16,12 +17,10 @@ namespace Microservicio_Cuestionario.AccessData.Command
             this.Context = contexto;
         }
         
-        public T Add<T>(T entity) where T : class
+        public void Add<T>(T entity) where T : class
         {
             Context.Set<T>().Add(entity);
             Context.SaveChanges();
-
-            return entity;
         }
 
         public void Delete<T>(T entity) where T : class
@@ -54,5 +53,17 @@ namespace Microservicio_Cuestionario.AccessData.Command
             Context.Entry(entity).State = EntityState.Modified;
             Context.SaveChanges();
         }
+        //public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, string[] includeProperties = null)
+        //{
+        //    IQueryable<T> query = Context.Set<T>();
+
+        //    if (includeProperties != null)
+        //        foreach (string includeProperty in includeProperties)
+        //        {
+        //            query = query.Include(includeProperty);
+        //        }
+
+        //    return query.Where(predicate);
+        //}
     }
 }

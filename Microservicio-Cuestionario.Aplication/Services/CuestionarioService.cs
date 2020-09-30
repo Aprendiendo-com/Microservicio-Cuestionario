@@ -25,9 +25,9 @@ namespace Microservicio_Cuestionario.Aplication.Services
         {
             var cuestionario = this._mapper.Map<Cuestionario>(cuestionarioDTO);
 
-            var cuestionarioDb = Repository.Add(cuestionario);
+            Repository.Add(cuestionario);
 
-            return this._mapper.Map<CuestionarioRespuestaDTO>(cuestionarioDb);
+            return this._mapper.Map<CuestionarioRespuestaDTO>(cuestionario);
         }
 
         //Modificado
@@ -85,7 +85,6 @@ namespace Microservicio_Cuestionario.Aplication.Services
         { //Se crea un cuestionario con el DTO recibido y lo borra
             var cuestionario = new Domain.Entities.Cuestionario()
             {
-                Calificacion = cuestionarioDTO.Calificacion,
                 Descripcion = cuestionarioDTO.Descripcion
             };
             this.Repository.Delete(cuestionario);
@@ -101,7 +100,6 @@ namespace Microservicio_Cuestionario.Aplication.Services
                 if (cuestionario.CuestionarioID == id) {
 
                     cuestionarioDTO.Descripcion = cuestionario.Descripcion;
-                    cuestionarioDTO.Calificacion = cuestionario.Calificacion;
 
                 }
             }

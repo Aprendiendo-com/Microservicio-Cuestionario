@@ -11,6 +11,6 @@ namespace Microservicio_Cuestionario.Domain.Entities
         public int CuestionarioId { get; set; }
 
         public Cuestionario CuestionarioNavegator { get; set; }
-        public Respuesta RespuestaNavegator { get; set; }
+        public virtual ICollection<Respuesta> RespuestaNavegator { get; set; }
     }
 }

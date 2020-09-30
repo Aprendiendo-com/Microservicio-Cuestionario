@@ -8,6 +8,5 @@ namespace Microservicio_Cuestionario.Domain.DTO
     {
         public int CuestionarioID { get; set; }
         public string Descripcion { get; set; }
-        public float Calificacion { get; set; }
     }
 }

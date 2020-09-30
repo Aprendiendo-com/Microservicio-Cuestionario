@@ -22,10 +22,10 @@ namespace Microservicio_Cuestionario.Aplication.Services
         {
             var registro = this._mapper.Map<Registro>(registroAddDTO);
 
-            var respuesta = Repository.Add(registro);
+            Repository.Add(registro);
 
 
-            return this._mapper.Map<RegistroRespuestaDTO>(respuesta);
+            return this._mapper.Map<RegistroRespuestaDTO>(registro);
         }
         public List<RegistroDTO> GetAll()
         {

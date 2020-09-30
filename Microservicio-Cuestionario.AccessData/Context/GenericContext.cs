@@ -33,7 +33,7 @@ namespace Microservicio_Cuestionario.AccessData.Context
                 entity.HasKey(q => q.CuestionarioID);
 
                 entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
-                entity.Property(q => q.Calificacion).IsRequired();
+                
 
             }
             );
@@ -41,6 +41,7 @@ namespace Microservicio_Cuestionario.AccessData.Context
             {
                 entity.HasKey(q => q.RegistroId);
                 entity.Property(q => q.EstudianteId).IsRequired();
+                entity.Property(q => q.Calificacion).IsRequired();
 
 
                 entity.HasOne(q => q.Cuestionario)
@@ -51,8 +52,7 @@ namespace Microservicio_Cuestionario.AccessData.Context
 
             modelBuilder.Entity<Pregunta>(entity =>
             {
-                //entity.HasKey(q => new { q.PreguntaId, q.CuestionarioId}); // pk compuesta
-                //entity.HasKey(q => q.CuestionarioId);
+                
                 entity.HasKey(q => q.PreguntaId );
 
                 entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
@@ -60,10 +60,6 @@ namespace Microservicio_Cuestionario.AccessData.Context
                 entity.HasOne(q => q.CuestionarioNavegator)
                 .WithMany(q => q.PreguntaNavegator)
                 .HasForeignKey(q => q.CuestionarioId);
-
-                entity.HasOne(q => q.RespuestaNavegator)
-                .WithOne(q => q.PreguntaNavegator)
-                .HasForeignKey<Respuesta>(b => b.PreguntaId);
 
             }
             );
@@ -74,9 +70,11 @@ namespace Microservicio_Cuestionario.AccessData.Context
 
                 entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
                 entity.Property(q => q.PreguntaId).IsRequired();
+                entity.Property(q => q.Flag).IsRequired();
 
-                //entity.HasOne(q => q.PreguntaNavegator)
-                //.WithOne(q => q.RespuestaNavegator).HasForeignKey<Respuesta>(q => q.PreguntaId);
+                entity.HasOne(q => q.PreguntaNavegator)
+                .WithMany(q => q.RespuestaNavegator)
+                .HasForeignKey(q => q.PreguntaId);
 
             }
             );
