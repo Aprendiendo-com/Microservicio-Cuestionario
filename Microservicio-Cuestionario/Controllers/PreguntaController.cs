@@ -33,18 +33,18 @@ namespace Microservicio_Cuestionario.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult AddPregunta(PreguntaDTO preguntaDTO)
-        {
-            try
-            {
-                return new JsonResult(this.service.Add(preguntaDTO)) { StatusCode = 201 };
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
+        //[HttpPost]
+        //public IActionResult AddPregunta(PreguntaDTO preguntaDTO)
+        //{
+        //    try
+        //    {
+        //        return new JsonResult(this.service.Add(preguntaDTO)) { StatusCode = 201 };
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.Message);
+        //    }
+        //}
 
         [HttpPut]
         public IActionResult Edit( PreguntaUpdateDto preguntaUpdateDto)

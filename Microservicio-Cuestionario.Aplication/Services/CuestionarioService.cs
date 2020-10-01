@@ -37,23 +37,32 @@ namespace Microservicio_Cuestionario.Aplication.Services
             {
                 Descripcion = cuestionarioTodoDTO.Descripcion,
             };
-            var id = this.Repository.Add(cuestionarioDb);
-            var listPreguntas = cuestionarioTodoDTO.PreguntaNavegator.ToList();
+            this.Repository.Add(cuestionarioDb);
+
+            var listPreguntas = cuestionarioTodoDTO.Preguntas.ToList();
             
             foreach (var p in listPreguntas)
             {
                 var preguntaDb = new Pregunta()
                 {
-                    CuestionarioId = id.CuestionarioID,
+                    CuestionarioId = cuestionarioDb.CuestionarioID,
                     Descripcion = p.Descripcion
                 };
-                var pregunta = this.Repository.Add(preguntaDb);
-                var respuestaDb = new Respuesta()
+                this.Repository.Add(preguntaDb);
+
+                var listRespuestas = p.Respuestas;
+
+                foreach (var r in listRespuestas)
                 {
-                    PreguntaId = pregunta.PreguntaId,
-                    Descripcion = p.RespuestaNavegator.Descripcion
-                };
-                this.Repository.Add(respuestaDb);
+                    var respuestaDb = new Respuesta()
+                    {
+                        Descripcion = r.Descripcion,
+                        Flag = r.Flag,
+                        PreguntaId = preguntaDb.PreguntaId
+                    };
+
+                    this.Repository.Add(respuestaDb);
+                }
             }
 
             return this._mapper.Map<CuestionarioRespuestaDTO>(cuestionarioDb);
