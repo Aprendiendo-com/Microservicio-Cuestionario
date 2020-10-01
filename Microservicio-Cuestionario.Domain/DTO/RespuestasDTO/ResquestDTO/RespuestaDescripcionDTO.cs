@@ -7,5 +7,6 @@ namespace Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO
     public class RespuestaDescripcionDTO
     {
         public string Descripcion { get; set; }
+        public bool Flag { get; set; }
     }
 }
