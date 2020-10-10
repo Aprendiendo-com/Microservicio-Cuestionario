@@ -8,7 +8,8 @@ namespace Microservicio_Cuestionario.Domain.Entities
     {
         public int CuestionarioID { get; set; }
         public string Descripcion { get; set; }
-       
+        public int ClaseId { get; set; }
+
 
         public ICollection<Registro> Registros { get; set; }
         public ICollection<Pregunta> PreguntaNavegator { get; set; }

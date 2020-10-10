@@ -3,14 +3,16 @@ using Microservicio_Cuestionario.AccessData.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
     [DbContext(typeof(GenericContext))]
-    partial class GenericContextModelSnapshot : ModelSnapshot
+    [Migration("20201010174743_CreateMigration2")]
+    partial class CreateMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

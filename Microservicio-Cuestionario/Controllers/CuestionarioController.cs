@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microservicio_Cuestionario.Domain.DTO;
 using Microservicio_Cuestionario.Domain.DTO.CuestionariosDTO.DTORequest;
+using Microservicio_Cuestionario.Domain.DTO.DTO_Compuestos;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -86,6 +87,20 @@ namespace Microservicio_Cuestionario.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("cuestionario")]
+
+        public IActionResult Cuestionario(CuestionarioACorregirDTO cuestionario)
+        {
+            try
+            {
+                return new JsonResult(this.service.CorreccionCuestionario(cuestionario)) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
             }
         }
 

@@ -7,6 +7,7 @@ using AutoMapper;
 using Microservicio_Cuestionario.Aplication.Services.Base;
 using Microservicio_Cuestionario.Domain.DTO;
 using Microservicio_Cuestionario.Domain.DTO.CuestionariosDTO.DTORequest;
+using Microservicio_Cuestionario.Domain.DTO.DTO_Compuestos;
 using Microservicio_Cuestionario.Domain.DTO.DTOResponse;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Queries;
@@ -30,6 +31,8 @@ namespace Microservicio_Cuestionario.Aplication.Services
 
             return this._mapper.Map<CuestionarioRespuestaDTO>(cuestionario);
         }
+
+
 
         //Modificado
         public CuestionarioRespuestaDTO AddCuestionario(CuestionarioTodoDTO cuestionarioTodoDTO)
@@ -149,6 +152,44 @@ namespace Microservicio_Cuestionario.Aplication.Services
                     this.Repository.Delete(cuestionario);
                 }
             }
+        }
+
+        public CuestionarioCorreccionDTO CorreccionCuestionario(CuestionarioACorregirDTO cuestionario)
+        {
+
+            var RespuestasCorrectas = ((ICuestionarioRepository)Repository).RespuestasCorrectas(cuestionario.CuestionarioId);
+
+            var RespuestasAlumnos = cuestionario.Respuestas.ToArray();
+
+            var list = new List<RespuestaCompuestaDTO>();
+
+            int cont = 0;
+            double calificacion = 0;
+            double calificacionParcial = 0;
+
+            foreach (var r in RespuestasCorrectas)
+            {
+                
+                if (r.Descripcion == RespuestasAlumnos[cont].Descripcion)
+                {
+                    calificacion += 10.0 / RespuestasCorrectas.Count; 
+                    calificacionParcial = 10.0 / RespuestasCorrectas.Count;
+                }
+
+                var respuesta = new RespuestaCompuestaDTO()
+                {
+                    RespuestaAlumno = RespuestasAlumnos[cont].Descripcion,
+                    RespuestaCorrecta = r.Descripcion,
+                    CalificacionParcial = calificacionParcial
+                };
+                    
+                list.Add(respuesta);
+
+                cont++;
+                calificacionParcial = 0;
+            }
+
+            return new CuestionarioCorreccionDTO { CalificacionTotal = calificacion, Respuestas = list};
         }
     }
 }

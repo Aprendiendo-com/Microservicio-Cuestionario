@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microservicio_Cuestionario.AccessData.Command;
@@ -10,7 +11,11 @@ using Microservicio_Cuestionario.Domain.DTO.CuestionariosDTO.DTORequest;
 using Microservicio_Cuestionario.Domain.DTO.PreguntasDTO.ResponseDTO;
 using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.Entities;
+using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO;
+using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Queries;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microservicio_Cuestionario.AccessData.Queries
@@ -102,6 +107,16 @@ namespace Microservicio_Cuestionario.AccessData.Queries
             }
             cuestionarioCompleto.Preguntas = listaPreguntas;
             return cuestionarioCompleto;
+        }
+
+        public List<Respuesta> RespuestasCorrectas(int id)
+        {
+            var preguntas = this.Context.Preguntas.Include("RespuestaNavegator");
+
+            var queryRespuestasCorrectas = preguntas.Where(x => x.CuestionarioId == id)
+                .Select(x => x.RespuestaNavegator.Where(x => x.Flag == true).FirstOrDefault()).ToList();
+
+            return queryRespuestasCorrectas;
         }
     }
 }
