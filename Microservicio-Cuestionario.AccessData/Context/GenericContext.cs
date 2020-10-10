@@ -32,6 +32,7 @@ namespace Microservicio_Cuestionario.AccessData.Context
             {
                 entity.HasKey(q => q.CuestionarioID);
 
+                entity.Property(q => q.ClaseId).IsRequired();
                 entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
                 
 

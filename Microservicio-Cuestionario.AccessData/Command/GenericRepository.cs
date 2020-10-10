@@ -53,9 +53,10 @@ namespace Microservicio_Cuestionario.AccessData.Command
             Context.Entry(entity).State = EntityState.Modified;
             Context.SaveChanges();
         }
-        //public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate, string[] includeProperties = null)
+
+        //public IQueryable FindBy(Expression<Func<bool>> predicate, string[] includeProperties = null)
         //{
-        //    IQueryable<T> query = Context.Set<T>();
+        //    IQueryable query = Context.Set<T>();
 
         //    if (includeProperties != null)
         //        foreach (string includeProperty in includeProperties)
