@@ -19,6 +19,9 @@ namespace Microservicio_Cuestionario.Domain.Services
         List<CuestionarioGetDTO> GetAll();
         void Update(CuestionarioUpdateDTO cuestionarioUpdateDTO);
 
+        List<CuestionarioTodoDTO> GetCompleto();
+        List<CuestionarioTodoDTO> GetCompletoConRespuestasCorrectas();
+
 
         //Modificado
         void DeleteCuestionario(CuestionarioDTO cuestionarioDTO);

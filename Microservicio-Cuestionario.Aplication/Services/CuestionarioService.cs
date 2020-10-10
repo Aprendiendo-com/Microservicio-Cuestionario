@@ -17,15 +17,16 @@ namespace Microservicio_Cuestionario.Aplication.Services
 {
     public class CuestionarioService : GenericService, ICuestionarioService
     {
+        private readonly ICuestionarioRepository repository;
         public CuestionarioService(ICuestionarioRepository repository, IMapper mapper):base(repository, mapper)
         {
-
+            this.repository = repository;
         }
         
         public CuestionarioRespuestaDTO AddCuestionario(CuestionarioDTO cuestionarioDTO)
         {
             var cuestionario = this._mapper.Map<Cuestionario>(cuestionarioDTO);
-
+            
             Repository.Add(cuestionario);
 
             return this._mapper.Map<CuestionarioRespuestaDTO>(cuestionario);
@@ -91,8 +92,30 @@ namespace Microservicio_Cuestionario.Aplication.Services
 
 
 
+        //MODIFICADO CUESTIONARIO COMPLETO
+        public List<CuestionarioTodoDTO> GetCompleto()
+        {
+            List<CuestionarioTodoDTO> cuestionariosCompletos = new List<CuestionarioTodoDTO>();
+            var cuestionarios = this.Repository.Traer<Cuestionario>();
+            foreach (Cuestionario cuestionario in cuestionarios)
+            {
+                cuestionariosCompletos.Add(repository.GetCuestionarioCompleto(cuestionario));
+            }
+            return cuestionariosCompletos;
+        }
+        public List<CuestionarioTodoDTO> GetCompletoConRespuestasCorrectas()
+        {
+            List<CuestionarioTodoDTO> cuestionariosCompletos = new List<CuestionarioTodoDTO>();
+            var cuestionarios = this.Repository.Traer<Cuestionario>();
+            foreach (Cuestionario cuestionario in cuestionarios)
+            {
+                cuestionariosCompletos.Add(repository.GetCuestionarioConRespuestasCorrectas(cuestionario));
+            }
+            return cuestionariosCompletos;
+        }
+
         //Modificado
-        
+
         public void DeleteCuestionario(CuestionarioDTO cuestionarioDTO)
         { //Se crea un cuestionario con el DTO recibido y lo borra
             var cuestionario = new Domain.Entities.Cuestionario()

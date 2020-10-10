@@ -20,7 +20,7 @@ namespace Microservicio_Cuestionario.Controllers
 
             service = services;
         }
-
+        
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -33,7 +33,32 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        
+        [HttpGet("Completo")]
+        public IActionResult GetCompleto()
+        {
+            try
+            {
+                return new JsonResult(service.GetCompleto()) { StatusCode = 200 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("CompletoConRespuestasCorrectas")]
+        public IActionResult GetConRespuestasCorrectas()
+        {
+            try
+            {
+                return new JsonResult(service.GetCompletoConRespuestasCorrectas()) { StatusCode = 200 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
         //modificado
 
         [HttpPost]
