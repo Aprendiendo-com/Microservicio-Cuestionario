@@ -22,6 +22,8 @@ namespace Microservicio_Cuestionario.Domain.Services
         List<CuestionarioTodoDTO> GetCompleto();
         List<CuestionarioTodoDTO> GetCompletoConRespuestasCorrectas();
 
+        CuestionarioTodoDTO GetCuestionarioDeClase(int idClase);
+
 
         //Modificado
         void DeleteCuestionario(CuestionarioDTO cuestionarioDTO);

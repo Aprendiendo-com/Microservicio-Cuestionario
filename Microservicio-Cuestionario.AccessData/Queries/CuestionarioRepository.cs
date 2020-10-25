@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microservicio_Cuestionario.AccessData.Command;
@@ -11,11 +10,8 @@ using Microservicio_Cuestionario.Domain.DTO.CuestionariosDTO.DTORequest;
 using Microservicio_Cuestionario.Domain.DTO.PreguntasDTO.ResponseDTO;
 using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.Entities;
-using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO;
-using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Queries;
 using Microsoft.AspNetCore.Components.Web;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microservicio_Cuestionario.AccessData.Queries
@@ -32,7 +28,8 @@ namespace Microservicio_Cuestionario.AccessData.Queries
             RespuestaDescripcionDTO respuesta;
             CuestionarioTodoDTO cuestionarioCompleto = new CuestionarioTodoDTO()
             {
-                Descripcion = cuestionario.Descripcion
+                Descripcion = cuestionario.Descripcion,
+                ClaseId = cuestionario.ClaseId
             };
             List<PreguntaConRespuestaDTO> listaPreguntas = new List<PreguntaConRespuestaDTO>();
             
@@ -72,7 +69,8 @@ namespace Microservicio_Cuestionario.AccessData.Queries
             RespuestaDescripcionDTO respuesta;
             CuestionarioTodoDTO cuestionarioCompleto = new CuestionarioTodoDTO()
             {
-                Descripcion = cuestionario.Descripcion
+                Descripcion = cuestionario.Descripcion,
+                ClaseId = cuestionario.ClaseId
             };
             List<PreguntaConRespuestaDTO> listaPreguntas = new List<PreguntaConRespuestaDTO>();
 

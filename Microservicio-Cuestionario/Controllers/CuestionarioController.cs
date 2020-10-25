@@ -58,7 +58,19 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
+        [HttpGet("GetPorClase")]
+        public IActionResult GetCuestionariosDeClase(int idClase)
+        {
+            try
+            {
+                return new JsonResult(service.GetCuestionarioDeClase(idClase)) { StatusCode = 200 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         //modificado
 
         [HttpPost]
