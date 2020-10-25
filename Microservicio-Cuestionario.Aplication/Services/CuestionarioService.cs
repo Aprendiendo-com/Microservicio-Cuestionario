@@ -40,6 +40,7 @@ namespace Microservicio_Cuestionario.Aplication.Services
             var cuestionarioDb = new Cuestionario()
             {
                 Descripcion = cuestionarioTodoDTO.Descripcion,
+                ClaseId = cuestionarioTodoDTO.ClaseId
             };
             this.Repository.Add(cuestionarioDb);
 
@@ -113,7 +114,14 @@ namespace Microservicio_Cuestionario.Aplication.Services
             }
             return cuestionariosCompletos;
         }
-
+        //GET CUESTIONARIO POR CLASE
+        public CuestionarioTodoDTO GetCuestionarioDeClase(int idClase)
+        {
+            CuestionarioTodoDTO cuestionarioCompleto = new CuestionarioTodoDTO();
+            var cuestionario = this.Repository.Traer<Cuestionario>().FirstOrDefault(x => x.ClaseId == idClase);
+            cuestionarioCompleto = repository.GetCuestionarioCompleto(cuestionario);
+            return cuestionarioCompleto;
+        }
         //Modificado
 
         public void DeleteCuestionario(CuestionarioDTO cuestionarioDTO)
