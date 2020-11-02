@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using AutoMapper;
 using Microservicio_Cuestionario.Aplication.Services.Base;
 using Microservicio_Cuestionario.Domain.DTO;
+using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResponseDTO;
 using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.Queries;
@@ -27,6 +29,23 @@ namespace Microservicio_Cuestionario.Aplication.Services
 
             return this._mapper.Map<RegistroRespuestaDTO>(registro);
         }
+        //MODIFICADO
+        public RegistroRespuestaDTO AddRegistroConClase(RegistroRequestDTO registroAddDTO)
+        {
+            var registro = this._mapper.Map<Registro>(registroAddDTO);
+
+
+            registro.CuestionarioId = Repository.Traer<Cuestionario>().FirstOrDefault(x => x.ClaseId == registroAddDTO.ClaseId).CuestionarioID;
+
+            Repository.Add(registro);
+
+
+            return this._mapper.Map<RegistroRespuestaDTO>(registro);
+        }
+
+        //END
+
+
         public List<RegistroDTO> GetAll()
         {
             var registros = this.Repository.Traer<Domain.Entities.Registro>();
@@ -35,7 +54,21 @@ namespace Microservicio_Cuestionario.Aplication.Services
 
             return dto;
         }
+        //MODIFICADO
+        public List<RegistroResponseDTO> GetAllConClase()
+        {
+            var registros = this.Repository.Traer<Domain.Entities.Registro>();
 
+            var dto = this._mapper.Map<List<RegistroResponseDTO>>(registros);
+
+            foreach (var registro in dto)
+            {
+                registro.ClaseId = Repository.Traer<Cuestionario>().FirstOrDefault(x => x.CuestionarioID == registro.CuestionarioId).ClaseId;
+            }
+            return dto;
+        }
+
+        //END
         //public void Update(RegistroDTO registroDTO)// crear un dto para actualizar un registro
         //{
         //    var registro = new Domain.Entities.Registro()

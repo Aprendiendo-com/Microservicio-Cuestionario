@@ -2,6 +2,7 @@
 using Microservicio_Cuestionario.Domain.DTO;
 using Microservicio_Cuestionario.Domain.DTO.DTOResponse;
 using Microservicio_Cuestionario.Domain.DTO.PreguntasDTO.ResponseDTO;
+using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResponseDTO;
 using Microservicio_Cuestionario.Domain.DTO.RegistrosDTO.ResquestDTO;
 using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResponseDTO;
 using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO;
@@ -49,13 +50,19 @@ namespace Microservicio_Cuestionario.Aplication.Services
 
 
 
+            CreateMap<Registro, RegistroRequestDTO>(); // lo que devuelve add
+            CreateMap<RegistroRequestDTO, Registro>(); // lo que devuelve add
 
 
+            CreateMap<Registro, RegistroRespuestaDTO>(); // lo que devuelve add
+            CreateMap<RegistroRespuestaDTO, Registro>(); // lo que devuelve add
 
 
+            CreateMap<Registro, RegistroResponseDTO>(); // lo que devuelve add
+            CreateMap<RegistroResponseDTO, Registro>(); // lo que devuelve add
 
         }
 
-        
+
     }
 }
