@@ -199,5 +199,44 @@ namespace Microservicio_Cuestionario.Aplication.Services
 
             return new CuestionarioCorreccionDTO { CalificacionTotal = calificacion, Respuestas = list};
         }
+
+
+        //MODIFICAOD
+        public CuestionarioCorreccionDTO ResolucionCuestionario(CuestionarioAResolver cuestionario)
+        {
+            var idCuestionario = repository.Traer<Cuestionario>().FirstOrDefault(x => x.ClaseId == cuestionario.ClaseId).CuestionarioID;
+            var RespuestasCorrectas = ((ICuestionarioRepository)Repository).RespuestasCorrectas(idCuestionario);
+
+            var RespuestasAlumnos = cuestionario.Respuestas.ToArray();
+
+            var list = new List<RespuestaCompuestaDTO>();
+
+            int cont = 0;
+            double calificacion = 0;
+            double calificacionParcial = 0;
+
+            foreach (var r in RespuestasCorrectas)
+            {
+
+                if (r.Descripcion == RespuestasAlumnos[cont].Descripcion)
+                {
+                    calificacion += 10.0 / RespuestasCorrectas.Count;
+                    calificacionParcial = 10.0 / RespuestasCorrectas.Count;
+                }
+
+                var respuesta = new RespuestaCompuestaDTO()
+                {
+                    RespuestaAlumno = RespuestasAlumnos[cont].Descripcion,
+                    RespuestaCorrecta = r.Descripcion,
+                    CalificacionParcial = calificacionParcial
+                };
+
+                list.Add(respuesta);
+
+                cont++;
+                calificacionParcial = 0;
+            }
+            return new CuestionarioCorreccionDTO { CalificacionTotal = Math.Round(calificacion, 2), Respuestas = list };
+        }
     }
 }

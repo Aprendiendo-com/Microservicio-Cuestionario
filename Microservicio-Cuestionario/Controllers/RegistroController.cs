@@ -33,7 +33,19 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+        //MODIFICADO
+        [HttpPost("PostConClase")]
+        public IActionResult AddConClase(RegistroRequestDTO registroDTO)
+        {
+            try
+            {
+                return new JsonResult(service.AddRegistroConClase(registroDTO)) { StatusCode = 201 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         //[HttpPut]
         //public IActionResult Edit(RegistroDTO registroDTO)
         //{
@@ -60,6 +72,19 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        //MODIFICADO
+        [HttpGet("ConClase")]
+        public IActionResult GetAllConClase()
+        {
+            try
+            {
+                return new JsonResult(service.GetAllConClase()) { StatusCode = 200 };
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         //[HttpDelete("DeleteById")]
         //public IActionResult DeleteBy(int id)
@@ -74,7 +99,7 @@ namespace Microservicio_Cuestionario.Controllers
         //        return BadRequest(ex.Message);
         //    }
         //}
-        
+
 
     }
 }

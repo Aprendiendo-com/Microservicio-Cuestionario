@@ -116,8 +116,20 @@ namespace Microservicio_Cuestionario.Controllers
             }
         }
 
+        //MODIFICADO
+        [HttpPost("Resolucion")]
 
-
+        public IActionResult Resolucion(CuestionarioAResolver cuestionario)
+        {
+            try
+            {
+                return new JsonResult(this.service.ResolucionCuestionario(cuestionario)) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
         //[HttpPost]
         //public IActionResult Add(CuestionarioDTO cuestionarioDto)
         //{
