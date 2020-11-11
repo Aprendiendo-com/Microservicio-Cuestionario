@@ -5,6 +5,7 @@ using Microservicio_Cuestionario.Domain.Command.BaseRepository;
 using Microservicio_Cuestionario.Domain.DTO.CuestionariosDTO.DTORequest;
 using Microservicio_Cuestionario.Domain.Entities;
 using Microservicio_Cuestionario.Domain.DTO.RespuestasDTO.ResquestDTO;
+using System.Linq;
 
 namespace Microservicio_Cuestionario.Domain.Queries
 {
@@ -13,6 +14,6 @@ namespace Microservicio_Cuestionario.Domain.Queries
         public CuestionarioTodoDTO GetCuestionarioCompleto(Cuestionario c);
         public CuestionarioTodoDTO GetCuestionarioConRespuestasCorrectas(Cuestionario c);
 
-        List<Respuesta> RespuestasCorrectas(int id);
+        IQueryable<Pregunta> RespuestasCorrectas(int id);
     }
 }

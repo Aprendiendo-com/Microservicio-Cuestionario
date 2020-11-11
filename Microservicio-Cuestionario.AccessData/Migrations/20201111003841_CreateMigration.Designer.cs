@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
     [DbContext(typeof(GenericContext))]
-    [Migration("20201104063251_Migrations")]
-    partial class Migrations
+    [Migration("20201111003841_CreateMigration")]
+    partial class CreateMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,6 +103,9 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<double>("CalificacionParcial")
+                        .HasColumnType("float");
+
                     b.Property<int>("CuestionarioId")
                         .HasColumnType("int");
 
@@ -121,168 +124,196 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                         new
                         {
                             PreguntaId = 1,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 1,
                             Descripcion = "¿Que es la Encapsulación?"
                         },
                         new
                         {
                             PreguntaId = 2,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 1,
                             Descripcion = "¿Que son las Interfaces?"
                         },
                         new
                         {
                             PreguntaId = 3,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 1,
                             Descripcion = "¿Que es Sobrecarga?"
                         },
                         new
                         {
                             PreguntaId = 4,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 2,
                             Descripcion = "¿Qué es una excepción?"
                         },
                         new
                         {
                             PreguntaId = 5,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 2,
                             Descripcion = "Un programador, ¿puede disparar sus propias excepciones?"
                         },
                         new
                         {
                             PreguntaId = 6,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 2,
                             Descripcion = "¿Qué se define dentro del finally?"
                         },
                         new
                         {
                             PreguntaId = 7,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 2,
                             Descripcion = "¿Qué se puede hacer con la sentencia trow?"
                         },
                         new
                         {
                             PreguntaId = 8,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 3,
                             Descripcion = "Según la definición de Grafos, indice cual opción define mejor el concepto de trayectoria de un vértice v0 a vn."
                         },
                         new
                         {
                             PreguntaId = 9,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 3,
                             Descripcion = "Indique la definición correcta de Grafo."
                         },
                         new
                         {
                             PreguntaId = 10,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 3,
                             Descripcion = "¿Cuál es el algoritmo que resuelve el problema del camino mínimo?"
                         },
                         new
                         {
                             PreguntaId = 11,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 4,
                             Descripcion = "Complete: ___________ in the office?"
                         },
                         new
                         {
                             PreguntaId = 12,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 4,
                             Descripcion = "Complete: _______ the books on the shelf?"
                         },
                         new
                         {
                             PreguntaId = 13,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 4,
                             Descripcion = "Complete: I ____ not ready."
                         },
                         new
                         {
                             PreguntaId = 14,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 5,
                             Descripcion = "Complete: She ______ (wash) her car every week? "
                         },
                         new
                         {
                             PreguntaId = 15,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 5,
                             Descripcion = "Complete: Paul _______ (sleep) seven hours a day."
                         },
                         new
                         {
                             PreguntaId = 16,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 5,
                             Descripcion = "Complete: Who _____ (be) your favourite football player? "
                         },
                         new
                         {
                             PreguntaId = 17,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 6,
                             Descripcion = "Complete: She _________ (leave) tomorrow morning."
                         },
                         new
                         {
                             PreguntaId = 18,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 6,
                             Descripcion = "Complete: You _______ (make) a great effort."
                         },
                         new
                         {
                             PreguntaId = 19,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 6,
                             Descripcion = "Complete: I _______ (watch) TV right now."
                         },
                         new
                         {
                             PreguntaId = 20,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 7,
                             Descripcion = "El campo eléctrico es:"
                         },
                         new
                         {
                             PreguntaId = 21,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 7,
                             Descripcion = "¿Qué es un solenoide?"
                         },
                         new
                         {
                             PreguntaId = 22,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 7,
                             Descripcion = "¿Qué es un electroimán?"
                         },
                         new
                         {
                             PreguntaId = 23,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 8,
                             Descripcion = "¿Qué es la Coercitividad?"
                         },
                         new
                         {
                             PreguntaId = 24,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 8,
                             Descripcion = "¿Qué es la Remanencia?"
                         },
                         new
                         {
                             PreguntaId = 25,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 8,
                             Descripcion = "El vacío, ¿Tiene Coercitividad?"
                         },
                         new
                         {
                             PreguntaId = 26,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 9,
                             Descripcion = "¿A qué se conoce como ecuaciones de Maxwell?."
                         },
                         new
                         {
                             PreguntaId = 27,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 9,
                             Descripcion = "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?"
                         },
                         new
                         {
                             PreguntaId = 28,
+                            CalificacionParcial = 0.0,
                             CuestionarioId = 9,
                             Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?"
                         });
