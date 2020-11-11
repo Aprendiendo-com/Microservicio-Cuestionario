@@ -2,7 +2,7 @@
 
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
-    public partial class Migrations : Migration
+    public partial class CreateMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,8 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                     PreguntaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descripcion = table.Column<string>(maxLength: 250, nullable: false),
-                    CuestionarioId = table.Column<int>(nullable: false)
+                    CuestionarioId = table.Column<int>(nullable: false),
+                    CalificacionParcial = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,37 +101,37 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
 
             migrationBuilder.InsertData(
                 table: "Preguntas",
-                columns: new[] { "PreguntaId", "CuestionarioId", "Descripcion" },
+                columns: new[] { "PreguntaId", "CalificacionParcial", "CuestionarioId", "Descripcion" },
                 values: new object[,]
                 {
-                    { 1, 1, "¿Que es la Encapsulación?" },
-                    { 26, 9, "¿A qué se conoce como ecuaciones de Maxwell?." },
-                    { 25, 8, "El vacío, ¿Tiene Coercitividad?" },
-                    { 24, 8, "¿Qué es la Remanencia?" },
-                    { 23, 8, "¿Qué es la Coercitividad?" },
-                    { 22, 7, "¿Qué es un electroimán?" },
-                    { 21, 7, "¿Qué es un solenoide?" },
-                    { 20, 7, "El campo eléctrico es:" },
-                    { 19, 6, "Complete: I _______ (watch) TV right now." },
-                    { 18, 6, "Complete: You _______ (make) a great effort." },
-                    { 17, 6, "Complete: She _________ (leave) tomorrow morning." },
-                    { 16, 5, "Complete: Who _____ (be) your favourite football player? " },
-                    { 15, 5, "Complete: Paul _______ (sleep) seven hours a day." },
-                    { 14, 5, "Complete: She ______ (wash) her car every week? " },
-                    { 13, 4, "Complete: I ____ not ready." },
-                    { 12, 4, "Complete: _______ the books on the shelf?" },
-                    { 11, 4, "Complete: ___________ in the office?" },
-                    { 10, 3, "¿Cuál es el algoritmo que resuelve el problema del camino mínimo?" },
-                    { 9, 3, "Indique la definición correcta de Grafo." },
-                    { 8, 3, "Según la definición de Grafos, indice cual opción define mejor el concepto de trayectoria de un vértice v0 a vn." },
-                    { 7, 2, "¿Qué se puede hacer con la sentencia trow?" },
-                    { 6, 2, "¿Qué se define dentro del finally?" },
-                    { 5, 2, "Un programador, ¿puede disparar sus propias excepciones?" },
-                    { 4, 2, "¿Qué es una excepción?" },
-                    { 3, 1, "¿Que es Sobrecarga?" },
-                    { 2, 1, "¿Que son las Interfaces?" },
-                    { 27, 9, "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?" },
-                    { 28, 9, "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?" }
+                    { 1, 0.0, 1, "¿Que es la Encapsulación?" },
+                    { 26, 0.0, 9, "¿A qué se conoce como ecuaciones de Maxwell?." },
+                    { 25, 0.0, 8, "El vacío, ¿Tiene Coercitividad?" },
+                    { 24, 0.0, 8, "¿Qué es la Remanencia?" },
+                    { 23, 0.0, 8, "¿Qué es la Coercitividad?" },
+                    { 22, 0.0, 7, "¿Qué es un electroimán?" },
+                    { 21, 0.0, 7, "¿Qué es un solenoide?" },
+                    { 20, 0.0, 7, "El campo eléctrico es:" },
+                    { 19, 0.0, 6, "Complete: I _______ (watch) TV right now." },
+                    { 18, 0.0, 6, "Complete: You _______ (make) a great effort." },
+                    { 17, 0.0, 6, "Complete: She _________ (leave) tomorrow morning." },
+                    { 16, 0.0, 5, "Complete: Who _____ (be) your favourite football player? " },
+                    { 15, 0.0, 5, "Complete: Paul _______ (sleep) seven hours a day." },
+                    { 14, 0.0, 5, "Complete: She ______ (wash) her car every week? " },
+                    { 13, 0.0, 4, "Complete: I ____ not ready." },
+                    { 12, 0.0, 4, "Complete: _______ the books on the shelf?" },
+                    { 11, 0.0, 4, "Complete: ___________ in the office?" },
+                    { 10, 0.0, 3, "¿Cuál es el algoritmo que resuelve el problema del camino mínimo?" },
+                    { 9, 0.0, 3, "Indique la definición correcta de Grafo." },
+                    { 8, 0.0, 3, "Según la definición de Grafos, indice cual opción define mejor el concepto de trayectoria de un vértice v0 a vn." },
+                    { 7, 0.0, 2, "¿Qué se puede hacer con la sentencia trow?" },
+                    { 6, 0.0, 2, "¿Qué se define dentro del finally?" },
+                    { 5, 0.0, 2, "Un programador, ¿puede disparar sus propias excepciones?" },
+                    { 4, 0.0, 2, "¿Qué es una excepción?" },
+                    { 3, 0.0, 1, "¿Que es Sobrecarga?" },
+                    { 2, 0.0, 1, "¿Que son las Interfaces?" },
+                    { 27, 0.0, 9, "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?" },
+                    { 28, 0.0, 9, "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?" }
                 });
 
             migrationBuilder.InsertData(

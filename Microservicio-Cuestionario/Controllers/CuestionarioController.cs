@@ -102,19 +102,19 @@ namespace Microservicio_Cuestionario.Controllers
             }
         }
 
-        [HttpPost("cuestionario")]
+        //[HttpPost("cuestionario")]
 
-        public IActionResult Cuestionario(CuestionarioACorregirDTO cuestionario)
-        {
-            try
-            {
-                return new JsonResult(this.service.CorreccionCuestionario(cuestionario)) { StatusCode = 200 };
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
-        }
+        //public IActionResult Cuestionario(CuestionarioACorregirDTO cuestionario)
+        //{
+        //    try
+        //    {
+        //        return new JsonResult(this.service.CorreccionCuestionario(cuestionario)) { StatusCode = 200 };
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e);
+        //    }
+        //}
 
         //MODIFICADO
         [HttpPost("Resolucion")]

@@ -29,7 +29,7 @@ namespace Microservicio_Cuestionario.Domain.Services
         void DeleteCuestionario(CuestionarioDTO cuestionarioDTO);
         CuestionarioDTO FindCuestionarioById(int id);
         void DeleteCuestionarioById(int id);
-        CuestionarioCorreccionDTO CorreccionCuestionario(CuestionarioACorregirDTO cuestionario);
+        //CuestionarioCorreccionDTO CorreccionCuestionario(CuestionarioACorregirDTO cuestionario);
         CuestionarioCorreccionDTO ResolucionCuestionario(CuestionarioAResolver cuestionario);
 
     }

@@ -72,6 +72,7 @@ namespace Microservicio_Cuestionario.AccessData.Context
                 entity.HasKey(q => q.PreguntaId );
 
                 entity.Property(q => q.Descripcion).HasMaxLength(250).IsRequired();
+                entity.Property(q => q.CalificacionParcial).IsRequired();
 
                 entity.HasOne(q => q.CuestionarioNavegator)
                 .WithMany(q => q.PreguntaNavegator)

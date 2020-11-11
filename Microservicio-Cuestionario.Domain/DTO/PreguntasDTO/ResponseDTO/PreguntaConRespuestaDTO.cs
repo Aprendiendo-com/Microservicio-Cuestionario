@@ -8,6 +8,7 @@ namespace Microservicio_Cuestionario.Domain.DTO.PreguntasDTO.ResponseDTO
     public class PreguntaConRespuestaDTO
     {
         public string Descripcion { get; set; }
+        public double CalificacionParcial { get; set; }
         public List<RespuestaDescripcionDTO>  Respuestas { get; set; }
     }
 }

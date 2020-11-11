@@ -107,14 +107,14 @@ namespace Microservicio_Cuestionario.AccessData.Queries
             return cuestionarioCompleto;
         }
 
-        public List<Respuesta> RespuestasCorrectas(int id)
+        public IQueryable<Pregunta> RespuestasCorrectas(int id)
         {
             var preguntas = this.Context.Preguntas.Include("RespuestaNavegator");
 
-            var queryRespuestasCorrectas = preguntas.Where(x => x.CuestionarioId == id)
-                .Select(x => x.RespuestaNavegator.Where(x => x.Flag == true).FirstOrDefault()).ToList();
+            var queryPreguntasConRespuestasCorrectas = preguntas.Where(x => x.CuestionarioId == id)
+                .Select( x => new Pregunta { CalificacionParcial = x.CalificacionParcial, Descripcion = x.Descripcion, RespuestaNavegator = x.RespuestaNavegator.Where(x => x.Flag == true).ToList() });
 
-            return queryRespuestasCorrectas;
+            return queryPreguntasConRespuestasCorrectas;
         }
     }
 }

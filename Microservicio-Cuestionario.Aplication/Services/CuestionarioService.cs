@@ -37,6 +37,20 @@ namespace Microservicio_Cuestionario.Aplication.Services
         //Modificado
         public CuestionarioRespuestaDTO AddCuestionario(CuestionarioTodoDTO cuestionarioTodoDTO)
         {
+            double calificacionParcial = 0;
+            var listPregunta = cuestionarioTodoDTO.Preguntas.ToList();
+
+            foreach (var p in listPregunta)
+            {
+                calificacionParcial += p.CalificacionParcial;
+            }
+
+            if (calificacionParcial > 10.0 || calificacionParcial < 10.0)
+            {
+                throw new Exception("La suma de las calificaciones parciales excede o no cumple la calificacion maxima");
+            }
+
+
             var cuestionarioDb = new Cuestionario()
             {
                 Descripcion = cuestionarioTodoDTO.Descripcion,
@@ -45,13 +59,17 @@ namespace Microservicio_Cuestionario.Aplication.Services
             this.Repository.Add(cuestionarioDb);
 
             var listPreguntas = cuestionarioTodoDTO.Preguntas.ToList();
+
+           
             
             foreach (var p in listPreguntas)
             {
+               
                 var preguntaDb = new Pregunta()
                 {
                     CuestionarioId = cuestionarioDb.CuestionarioID,
-                    Descripcion = p.Descripcion
+                    Descripcion = p.Descripcion,
+                    CalificacionParcial = p.CalificacionParcial
                 };
                 this.Repository.Add(preguntaDb);
 
@@ -162,79 +180,90 @@ namespace Microservicio_Cuestionario.Aplication.Services
             }
         }
 
-        public CuestionarioCorreccionDTO CorreccionCuestionario(CuestionarioACorregirDTO cuestionario)
-        {
+        //public CuestionarioCorreccionDTO CorreccionCuestionario(CuestionarioACorregirDTO cuestionario)
+        //{
 
-            var RespuestasCorrectas = ((ICuestionarioRepository)Repository).RespuestasCorrectas(cuestionario.CuestionarioId);
+        //    var RespuestasCorrectas = ((ICuestionarioRepository)Repository).RespuestasCorrectas(cuestionario.CuestionarioId);
 
-            var RespuestasAlumnos = cuestionario.Respuestas.ToArray();
+        //    var RespuestasAlumnos = cuestionario.Respuestas.ToArray();
 
-            var list = new List<RespuestaCompuestaDTO>();
+        //    var list = new List<RespuestaCompuestaDTO>();
 
-            int cont = 0;
-            double calificacion = 0;
-            double calificacionParcial = 0;
+        //    int cont = 0;
+        //    double calificacion = 0;
+        //    double calificacionParcial = 0;
 
-            foreach (var r in RespuestasCorrectas)
-            {
+        //    foreach (var r in RespuestasCorrectas)
+        //    {
                 
-                if (r.Descripcion == RespuestasAlumnos[cont].Descripcion)
-                {
-                    calificacion += 10.0 / RespuestasCorrectas.Count; 
-                    calificacionParcial = 10.0 / RespuestasCorrectas.Count;
-                }
+        //        if (r.Descripcion == RespuestasAlumnos[cont].Descripcion)
+        //        {
+        //            calificacion += 10.0 / RespuestasCorrectas.Count; 
+        //            calificacionParcial = 10.0 / RespuestasCorrectas.Count;
+        //        }
 
-                var respuesta = new RespuestaCompuestaDTO()
-                {
-                    RespuestaAlumno = RespuestasAlumnos[cont].Descripcion,
-                    RespuestaCorrecta = r.Descripcion,
-                    CalificacionParcial = calificacionParcial
-                };
+        //        var respuesta = new RespuestaCompuestaDTO()
+        //        {
+        //            RespuestaAlumno = RespuestasAlumnos[cont].Descripcion,
+        //            RespuestaCorrecta = r.Descripcion,
+        //            CalificacionParcial = calificacionParcial
+        //        };
                     
-                list.Add(respuesta);
+        //        list.Add(respuesta);
 
-                cont++;
-                calificacionParcial = 0;
-            }
+        //        cont++;
+        //        calificacionParcial = 0;
+        //    }
 
-            return new CuestionarioCorreccionDTO { CalificacionTotal = calificacion, Respuestas = list};
-        }
+        //    return new CuestionarioCorreccionDTO { CalificacionTotal = calificacion, Respuestas = list};
+        //}
 
 
         //MODIFICAOD
         public CuestionarioCorreccionDTO ResolucionCuestionario(CuestionarioAResolver cuestionario)
         {
             var idCuestionario = repository.Traer<Cuestionario>().FirstOrDefault(x => x.ClaseId == cuestionario.ClaseId).CuestionarioID;
-            var RespuestasCorrectas = ((ICuestionarioRepository)Repository).RespuestasCorrectas(idCuestionario);
 
-            var RespuestasAlumnos = cuestionario.Respuestas.ToArray();
+            // este metodo tiene que devolver todas las preguntas del cuestionario con sus respuesta correcta.
+            var PreguntasRespuestasCorrectas = ((ICuestionarioRepository)Repository).RespuestasCorrectas(idCuestionario);
+
+            var PreguntaRespuestasAlumnos = cuestionario.Preguntas.ToArray();
 
             var list = new List<RespuestaCompuestaDTO>();
 
             int cont = 0;
             double calificacion = 0;
-            double calificacionParcial = 0;
 
-            foreach (var r in RespuestasCorrectas)
+            foreach (var p in PreguntasRespuestasCorrectas)
             {
+                var r = p.RespuestaNavegator.FirstOrDefault();
 
-                if (r.Descripcion == RespuestasAlumnos[cont].Descripcion)
+                if (r.Descripcion == PreguntaRespuestasAlumnos[cont].Respuesta.Descripcion)
                 {
-                    calificacion += 10.0 / RespuestasCorrectas.Count;
-                    calificacionParcial = 10.0 / RespuestasCorrectas.Count;
+                    calificacion += p.CalificacionParcial;
+
+                    var respuestaCorrecta = new RespuestaCompuestaDTO()
+                    {
+                        RespuestaAlumno = PreguntaRespuestasAlumnos[cont].Respuesta.Descripcion,
+                        RespuestaCorrecta = r.Descripcion,
+                        CalificacionParcial = p.CalificacionParcial
+                    };
+
+                    list.Add(respuestaCorrecta);
+                }
+                else
+                {
+                    var respuestaInCorrecta = new RespuestaCompuestaDTO()
+                    {
+                        RespuestaAlumno = PreguntaRespuestasAlumnos[cont].Respuesta.Descripcion,
+                        RespuestaCorrecta = r.Descripcion,
+                        CalificacionParcial = 0
+                    };
+
+                    list.Add(respuestaInCorrecta);
                 }
 
-                var respuesta = new RespuestaCompuestaDTO()
-                {
-                    RespuestaAlumno = RespuestasAlumnos[cont].Descripcion,
-                    RespuestaCorrecta = r.Descripcion,
-                    CalificacionParcial = calificacionParcial
-                };
-
-                list.Add(respuesta);
-
                 cont++;
-                calificacionParcial = 0;
             }
             return new CuestionarioCorreccionDTO { CalificacionTotal = Math.Round(calificacion, 2), Respuestas = list };
         }
