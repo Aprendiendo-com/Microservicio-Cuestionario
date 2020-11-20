@@ -82,42 +82,42 @@ namespace Microservicio_Cuestionario.AccessData.Context
 
 
                 entity.HasData(
-                    new Pregunta { PreguntaId = 1, Descripcion = "¿Que es la Encapsulación?", CuestionarioId = 1 },
-                    new Pregunta { PreguntaId = 2, Descripcion = "¿Que son las Interfaces?", CuestionarioId = 1 },
-                    new Pregunta { PreguntaId = 3, Descripcion = "¿Que es Sobrecarga?", CuestionarioId = 1 },
+                    new Pregunta { PreguntaId = 1, Descripcion = "¿Que es la Encapsulación?", CuestionarioId = 1 , CalificacionParcial = 3},
+                    new Pregunta { PreguntaId = 2, Descripcion = "¿Que son las Interfaces?", CuestionarioId = 1, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 3, Descripcion = "¿Que es Sobrecarga?", CuestionarioId = 1, CalificacionParcial = 4 },
 
-                    new Pregunta { PreguntaId = 4, Descripcion = "¿Qué es una excepción?", CuestionarioId = 2 },
-                    new Pregunta { PreguntaId = 5, Descripcion = "Un programador, ¿puede disparar sus propias excepciones?", CuestionarioId = 2 },
-                    new Pregunta { PreguntaId = 6, Descripcion = "¿Qué se define dentro del finally?", CuestionarioId = 2 },
-                    new Pregunta { PreguntaId = 7, Descripcion = "¿Qué se puede hacer con la sentencia trow?", CuestionarioId = 2 },
+                    new Pregunta { PreguntaId = 4, Descripcion = "¿Qué es una excepción?", CuestionarioId = 2, CalificacionParcial = 2 },
+                    new Pregunta { PreguntaId = 5, Descripcion = "Un programador, ¿puede disparar sus propias excepciones?", CuestionarioId = 2, CalificacionParcial = 4},
+                    new Pregunta { PreguntaId = 6, Descripcion = "¿Qué se define dentro del finally?", CuestionarioId = 2, CalificacionParcial = 2 },
+                    new Pregunta { PreguntaId = 7, Descripcion = "¿Qué se puede hacer con la sentencia trow?", CuestionarioId = 2, CalificacionParcial = 2 },
 
-                    new Pregunta { PreguntaId = 8, Descripcion = "Según la definición de Grafos, indice cual opción define mejor el concepto de trayectoria de un vértice v0 a vn.", CuestionarioId = 3 },
-                    new Pregunta { PreguntaId = 9, Descripcion = "Indique la definición correcta de Grafo.", CuestionarioId = 3 },
-                    new Pregunta { PreguntaId = 10, Descripcion = "¿Cuál es el algoritmo que resuelve el problema del camino mínimo?", CuestionarioId = 3 },
+                    new Pregunta { PreguntaId = 8, Descripcion = "Según la definición de Grafos, indice cual opción define mejor el concepto de trayectoria de un vértice v0 a vn.", CuestionarioId = 3, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 9, Descripcion = "Indique la definición correcta de Grafo.", CuestionarioId = 3, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 10, Descripcion = "¿Cuál es el algoritmo que resuelve el problema del camino mínimo?", CuestionarioId = 3, CalificacionParcial = 3 },
 
-                    new Pregunta { PreguntaId = 11, Descripcion = "Complete: ___________ in the office?", CuestionarioId = 4 },
-                    new Pregunta { PreguntaId = 12, Descripcion = "Complete: _______ the books on the shelf?", CuestionarioId = 4 },
-                    new Pregunta { PreguntaId = 13, Descripcion = "Complete: I ____ not ready.", CuestionarioId = 4 },
+                    new Pregunta { PreguntaId = 11, Descripcion = "Complete: ___________ in the office?", CuestionarioId = 4, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 12, Descripcion = "Complete: _______ the books on the shelf?", CuestionarioId = 4, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 13, Descripcion = "Complete: I ____ not ready.", CuestionarioId = 4, CalificacionParcial = 3 },
                     
-                    new Pregunta { PreguntaId = 14, Descripcion = "Complete: She ______ (wash) her car every week? ", CuestionarioId = 5 },
-                    new Pregunta { PreguntaId = 15, Descripcion = "Complete: Paul _______ (sleep) seven hours a day.", CuestionarioId = 5 },
-                    new Pregunta { PreguntaId = 16, Descripcion = "Complete: Who _____ (be) your favourite football player? ", CuestionarioId = 5 },
+                    new Pregunta { PreguntaId = 14, Descripcion = "Complete: She ______ (wash) her car every week? ", CuestionarioId = 5, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 15, Descripcion = "Complete: Paul _______ (sleep) seven hours a day.", CuestionarioId = 5, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 16, Descripcion = "Complete: Who _____ (be) your favourite football player? ", CuestionarioId = 5, CalificacionParcial = 4 },
 
-                    new Pregunta { PreguntaId = 17, Descripcion = "Complete: She _________ (leave) tomorrow morning.", CuestionarioId = 6 },
-                    new Pregunta { PreguntaId = 18, Descripcion = "Complete: You _______ (make) a great effort.", CuestionarioId = 6 },
-                    new Pregunta { PreguntaId = 19, Descripcion = "Complete: I _______ (watch) TV right now.", CuestionarioId = 6 },
+                    new Pregunta { PreguntaId = 17, Descripcion = "Complete: She _________ (leave) tomorrow morning.", CuestionarioId = 6, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 18, Descripcion = "Complete: You _______ (make) a great effort.", CuestionarioId = 6, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 19, Descripcion = "Complete: I _______ (watch) TV right now.", CuestionarioId = 6, CalificacionParcial = 3 },
 
-                    new Pregunta { PreguntaId = 20, Descripcion = "El campo eléctrico es:", CuestionarioId = 7 },
-                    new Pregunta { PreguntaId = 21, Descripcion = "¿Qué es un solenoide?", CuestionarioId = 7 },
-                    new Pregunta { PreguntaId = 22, Descripcion = "¿Qué es un electroimán?", CuestionarioId = 7 },
+                    new Pregunta { PreguntaId = 20, Descripcion = "El campo eléctrico es:", CuestionarioId = 7, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 21, Descripcion = "¿Qué es un solenoide?", CuestionarioId = 7, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 22, Descripcion = "¿Qué es un electroimán?", CuestionarioId = 7, CalificacionParcial = 4 },
 
-                    new Pregunta { PreguntaId = 23, Descripcion = "¿Qué es la Coercitividad?", CuestionarioId = 8 },
-                    new Pregunta { PreguntaId = 24, Descripcion = "¿Qué es la Remanencia?", CuestionarioId = 8 },
-                    new Pregunta { PreguntaId = 25, Descripcion = "El vacío, ¿Tiene Coercitividad?", CuestionarioId = 8 },
+                    new Pregunta { PreguntaId = 23, Descripcion = "¿Qué es la Coercitividad?", CuestionarioId = 8, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 24, Descripcion = "¿Qué es la Remanencia?", CuestionarioId = 8, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 25, Descripcion = "El vacío, ¿Tiene Coercitividad?", CuestionarioId = 8, CalificacionParcial = 3 },
 
-                    new Pregunta { PreguntaId = 26, Descripcion = "¿A qué se conoce como ecuaciones de Maxwell?.", CuestionarioId = 9 },
-                    new Pregunta { PreguntaId = 27, Descripcion = "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?", CuestionarioId = 9 },
-                    new Pregunta { PreguntaId = 28, Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?", CuestionarioId = 9 }
+                    new Pregunta { PreguntaId = 26, Descripcion = "¿A qué se conoce como ecuaciones de Maxwell?.", CuestionarioId = 9, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 27, Descripcion = "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?", CuestionarioId = 9, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 28, Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?", CuestionarioId = 9, CalificacionParcial = 3 }
 
 
                     );

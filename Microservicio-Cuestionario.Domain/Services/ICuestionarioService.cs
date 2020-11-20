@@ -32,5 +32,12 @@ namespace Microservicio_Cuestionario.Domain.Services
         //CuestionarioCorreccionDTO CorreccionCuestionario(CuestionarioACorregirDTO cuestionario);
         CuestionarioCorreccionDTO ResolucionCuestionario(CuestionarioAResolver cuestionario);
 
+
+
+
+
+
+        void ActualizarCuestionario(CuestionarioTodoDTO cuestionarioTodoDTO);
+
     }
 }

@@ -267,5 +267,84 @@ namespace Microservicio_Cuestionario.Aplication.Services
             }
             return new CuestionarioCorreccionDTO { CalificacionTotal = Math.Round(calificacion, 2), Respuestas = list };
         }
+
+
+
+
+
+
+        
+
+
+
+
+        //Modificado
+        public void ActualizarCuestionario(CuestionarioTodoDTO cuestionarioTodoDTO)
+        {
+            var cuestionario = repository.Traer<Cuestionario>().FirstOrDefault(x => x.ClaseId == cuestionarioTodoDTO.ClaseId);
+
+            /* MODIFICO TAMBIÉN LAS CALIFICACIONES PARCIALES DEL GET BY CURSOID*/
+
+            /*
+            double calificacionParcial = 0;
+            var listPregunta = cuestionarioTodoDTO.Preguntas.ToList();
+
+            foreach (var p in listPregunta)
+            {
+                calificacionParcial += p.CalificacionParcial;
+            }
+            
+            if (calificacionParcial > 10.0 || calificacionParcial < 10.0)
+            {
+                throw new Exception("La suma de las calificaciones parciales excede o no cumple la calificacion maxima");
+            }*/
+            cuestionario.Descripcion = cuestionarioTodoDTO.Descripcion;
+            cuestionario.ClaseId = cuestionarioTodoDTO.ClaseId;
+            this.repository.Update(cuestionario);
+
+
+
+
+            var preguntas = repository.Traer<Pregunta>().Where(x => x.CuestionarioId == cuestionario.CuestionarioID).ToList();
+
+            foreach (var pregunta in preguntas)
+            {
+                repository.Delete(pregunta);
+            }
+
+
+            var listPreguntas = cuestionarioTodoDTO.Preguntas.ToList();
+            foreach (var p in listPreguntas)
+            {
+
+                var preguntaDb = new Pregunta()
+                {
+                    CuestionarioId = cuestionario.CuestionarioID,
+                    Descripcion = p.Descripcion,
+                    CalificacionParcial = p.CalificacionParcial
+                };
+                this.Repository.Add(preguntaDb);
+
+                var listRespuestas = p.Respuestas;
+
+                foreach (var r in listRespuestas)
+                {
+                    var respuestaDb = new Respuesta()
+                    {
+                        Descripcion = r.Descripcion,
+                        Flag = r.Flag,
+                        PreguntaId = preguntaDb.PreguntaId
+                    };
+
+                    this.Repository.Add(respuestaDb);
+                }
+            }
+
+
+        }
+
+        //end
+
+
     }
 }

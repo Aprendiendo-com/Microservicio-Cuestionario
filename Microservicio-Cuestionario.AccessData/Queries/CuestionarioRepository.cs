@@ -55,6 +55,8 @@ namespace Microservicio_Cuestionario.AccessData.Queries
                 preguntasConRespuesta = new PreguntaConRespuestaDTO()
                 {
                     Descripcion = preguntas.Descripcion,
+                    /*MODIFICADO*/
+                    CalificacionParcial = preguntas.CalificacionParcial,
                     Respuestas = listaRespuestas
                 };
                 listaPreguntas.Add(preguntasConRespuesta);
