@@ -85,14 +85,14 @@ namespace Microservicio_Cuestionario.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
 
         [HttpPut]
-        public IActionResult Edit(CuestionarioUpdateDTO cuestionarioUpdateDTO)
+        public IActionResult Edit(CuestionarioTodoDTO cuestionario)
         {
             try
             {
-                service.Update(cuestionarioUpdateDTO);
+                service.ActualizarCuestionario(cuestionario);
                 return Ok();
                 //return new JsonResult(service.Update(cuestionarioDTO)) { StatusCode = 201};
             }
