@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microservicio_Cuestionario.AccessData.Migrations
 {
     [DbContext(typeof(GenericContext))]
-    [Migration("20201111003841_CreateMigration")]
-    partial class CreateMigration
+    [Migration("20201129224402_Migrations")]
+    partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,6 +93,18 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                             CuestionarioID = 9,
                             ClaseId = 9,
                             Descripcion = "Cuestionario de Ecuaciones de Maxwell"
+                        },
+                        new
+                        {
+                            CuestionarioID = 10,
+                            ClaseId = 10,
+                            Descripcion = "Cuestionario Patrones de Diseño"
+                        },
+                        new
+                        {
+                            CuestionarioID = 11,
+                            ClaseId = 11,
+                            Descripcion = "Introducción al Chino Mandarin"
                         });
                 });
 
@@ -124,198 +136,240 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                         new
                         {
                             PreguntaId = 1,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 1,
                             Descripcion = "¿Que es la Encapsulación?"
                         },
                         new
                         {
                             PreguntaId = 2,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 1,
                             Descripcion = "¿Que son las Interfaces?"
                         },
                         new
                         {
                             PreguntaId = 3,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 1,
                             Descripcion = "¿Que es Sobrecarga?"
                         },
                         new
                         {
                             PreguntaId = 4,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 2.0,
                             CuestionarioId = 2,
                             Descripcion = "¿Qué es una excepción?"
                         },
                         new
                         {
                             PreguntaId = 5,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 2,
                             Descripcion = "Un programador, ¿puede disparar sus propias excepciones?"
                         },
                         new
                         {
                             PreguntaId = 6,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 2.0,
                             CuestionarioId = 2,
                             Descripcion = "¿Qué se define dentro del finally?"
                         },
                         new
                         {
                             PreguntaId = 7,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 2.0,
                             CuestionarioId = 2,
                             Descripcion = "¿Qué se puede hacer con la sentencia trow?"
                         },
                         new
                         {
                             PreguntaId = 8,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 3,
                             Descripcion = "Según la definición de Grafos, indice cual opción define mejor el concepto de trayectoria de un vértice v0 a vn."
                         },
                         new
                         {
                             PreguntaId = 9,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 3,
                             Descripcion = "Indique la definición correcta de Grafo."
                         },
                         new
                         {
                             PreguntaId = 10,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 3,
                             Descripcion = "¿Cuál es el algoritmo que resuelve el problema del camino mínimo?"
                         },
                         new
                         {
                             PreguntaId = 11,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 4,
                             Descripcion = "Complete: ___________ in the office?"
                         },
                         new
                         {
                             PreguntaId = 12,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 4,
                             Descripcion = "Complete: _______ the books on the shelf?"
                         },
                         new
                         {
                             PreguntaId = 13,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 4,
                             Descripcion = "Complete: I ____ not ready."
                         },
                         new
                         {
                             PreguntaId = 14,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 5,
                             Descripcion = "Complete: She ______ (wash) her car every week? "
                         },
                         new
                         {
                             PreguntaId = 15,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 5,
                             Descripcion = "Complete: Paul _______ (sleep) seven hours a day."
                         },
                         new
                         {
                             PreguntaId = 16,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 5,
                             Descripcion = "Complete: Who _____ (be) your favourite football player? "
                         },
                         new
                         {
                             PreguntaId = 17,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 6,
                             Descripcion = "Complete: She _________ (leave) tomorrow morning."
                         },
                         new
                         {
                             PreguntaId = 18,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 6,
                             Descripcion = "Complete: You _______ (make) a great effort."
                         },
                         new
                         {
                             PreguntaId = 19,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 6,
                             Descripcion = "Complete: I _______ (watch) TV right now."
                         },
                         new
                         {
                             PreguntaId = 20,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 7,
                             Descripcion = "El campo eléctrico es:"
                         },
                         new
                         {
                             PreguntaId = 21,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 7,
                             Descripcion = "¿Qué es un solenoide?"
                         },
                         new
                         {
                             PreguntaId = 22,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 7,
                             Descripcion = "¿Qué es un electroimán?"
                         },
                         new
                         {
                             PreguntaId = 23,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 8,
                             Descripcion = "¿Qué es la Coercitividad?"
                         },
                         new
                         {
                             PreguntaId = 24,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 8,
                             Descripcion = "¿Qué es la Remanencia?"
                         },
                         new
                         {
                             PreguntaId = 25,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 8,
                             Descripcion = "El vacío, ¿Tiene Coercitividad?"
                         },
                         new
                         {
                             PreguntaId = 26,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 4.0,
                             CuestionarioId = 9,
                             Descripcion = "¿A qué se conoce como ecuaciones de Maxwell?."
                         },
                         new
                         {
                             PreguntaId = 27,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 9,
                             Descripcion = "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?"
                         },
                         new
                         {
                             PreguntaId = 28,
-                            CalificacionParcial = 0.0,
+                            CalificacionParcial = 3.0,
                             CuestionarioId = 9,
                             Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?"
+                        },
+                        new
+                        {
+                            PreguntaId = 29,
+                            CalificacionParcial = 2.0,
+                            CuestionarioId = 10,
+                            Descripcion = "¿Qué es un patrón de diseño?"
+                        },
+                        new
+                        {
+                            PreguntaId = 30,
+                            CalificacionParcial = 4.0,
+                            CuestionarioId = 10,
+                            Descripcion = "¿Cuál de los siguientes no es un tipo de patrón de diseño?"
+                        },
+                        new
+                        {
+                            PreguntaId = 31,
+                            CalificacionParcial = 4.0,
+                            CuestionarioId = 10,
+                            Descripcion = "El patrón que soluciona los problemas de composición de clases y objetos es:"
+                        },
+                        new
+                        {
+                            PreguntaId = 32,
+                            CalificacionParcial = 4.0,
+                            CuestionarioId = 11,
+                            Descripcion = "Qué significa: 谢谢!."
+                        },
+                        new
+                        {
+                            PreguntaId = 33,
+                            CalificacionParcial = 3.0,
+                            CuestionarioId = 11,
+                            Descripcion = "Qué significa: 不用谢."
+                        },
+                        new
+                        {
+                            PreguntaId = 34,
+                            CalificacionParcial = 3.0,
+                            CuestionarioId = 11,
+                            Descripcion = "Qué significa: 你好."
                         });
                 });
 
@@ -954,6 +1008,125 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                             Descripcion = "Se reduce a la mitad.",
                             Flag = false,
                             PreguntaId = 28
+                        },
+                        new
+                        {
+                            RespuestaId = 85,
+                            Descripcion = "Son unas técnicas para resolver problemas comunes en el desarrollo de software.",
+                            Flag = true,
+                            PreguntaId = 29
+                        },
+                        new
+                        {
+                            RespuestaId = 86,
+                            Descripcion = "Son pasos para resolver problemas en un lenguaje específico.",
+                            Flag = false,
+                            PreguntaId = 29
+                        },
+                        new
+                        {
+                            RespuestaId = 87,
+                            Descripcion = "El patrón creacional.",
+                            Flag = false,
+                            PreguntaId = 30
+                        },
+                        new
+                        {
+                            RespuestaId = 88,
+                            Descripcion = "El patrón de comportamiento.",
+                            Flag = false,
+                            PreguntaId = 30
+                        },
+                        new
+                        {
+                            RespuestaId = 89,
+                            Descripcion = "El patrón de arquitectura.",
+                            Flag = true,
+                            PreguntaId = 30
+                        },
+                        new
+                        {
+                            RespuestaId = 90,
+                            Descripcion = "El patrón creacional.",
+                            Flag = false,
+                            PreguntaId = 31
+                        },
+                        new
+                        {
+                            RespuestaId = 91,
+                            Descripcion = "El patrón estructural.",
+                            Flag = true,
+                            PreguntaId = 31
+                        },
+                        new
+                        {
+                            RespuestaId = 92,
+                            Descripcion = "El patrón de comportamiento.",
+                            Flag = false,
+                            PreguntaId = 31
+                        },
+                        new
+                        {
+                            RespuestaId = 93,
+                            Descripcion = "Buen dia!.",
+                            Flag = false,
+                            PreguntaId = 32
+                        },
+                        new
+                        {
+                            RespuestaId = 94,
+                            Descripcion = "¡Gracias!.",
+                            Flag = true,
+                            PreguntaId = 32
+                        },
+                        new
+                        {
+                            RespuestaId = 95,
+                            Descripcion = "Hola!.",
+                            Flag = false,
+                            PreguntaId = 32
+                        },
+                        new
+                        {
+                            RespuestaId = 96,
+                            Descripcion = "!Gracias!.",
+                            Flag = false,
+                            PreguntaId = 33
+                        },
+                        new
+                        {
+                            RespuestaId = 97,
+                            Descripcion = "De nada.",
+                            Flag = true,
+                            PreguntaId = 33
+                        },
+                        new
+                        {
+                            RespuestaId = 98,
+                            Descripcion = "Hola.",
+                            Flag = false,
+                            PreguntaId = 33
+                        },
+                        new
+                        {
+                            RespuestaId = 99,
+                            Descripcion = "Muy bien.",
+                            Flag = false,
+                            PreguntaId = 34
+                        },
+                        new
+                        {
+                            RespuestaId = 100,
+                            Descripcion = "Hola.",
+                            Flag = true,
+                            PreguntaId = 34
+                        },
+                        new
+                        {
+                            RespuestaId = 101,
+                            Descripcion = "Adiós.",
+                            Flag = false,
+                            PreguntaId = 34
                         });
                 });
 
