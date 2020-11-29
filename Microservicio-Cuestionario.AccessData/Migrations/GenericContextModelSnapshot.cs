@@ -91,6 +91,18 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                             CuestionarioID = 9,
                             ClaseId = 9,
                             Descripcion = "Cuestionario de Ecuaciones de Maxwell"
+                        },
+                        new
+                        {
+                            CuestionarioID = 10,
+                            ClaseId = 10,
+                            Descripcion = "Cuestionario Patrones de Diseño"
+                        },
+                        new
+                        {
+                            CuestionarioID = 11,
+                            ClaseId = 11,
+                            Descripcion = "Introducción al Chino Mandarin"
                         });
                 });
 
@@ -314,6 +326,48 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                             CalificacionParcial = 3.0,
                             CuestionarioId = 9,
                             Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?"
+                        },
+                        new
+                        {
+                            PreguntaId = 29,
+                            CalificacionParcial = 2.0,
+                            CuestionarioId = 10,
+                            Descripcion = "¿Qué es un patrón de diseño?"
+                        },
+                        new
+                        {
+                            PreguntaId = 30,
+                            CalificacionParcial = 4.0,
+                            CuestionarioId = 10,
+                            Descripcion = "¿Cuál de los siguientes no es un tipo de patrón de diseño?"
+                        },
+                        new
+                        {
+                            PreguntaId = 31,
+                            CalificacionParcial = 4.0,
+                            CuestionarioId = 10,
+                            Descripcion = "El patrón que soluciona los problemas de composición de clases y objetos es:"
+                        },
+                        new
+                        {
+                            PreguntaId = 32,
+                            CalificacionParcial = 4.0,
+                            CuestionarioId = 11,
+                            Descripcion = "Qué significa: 谢谢!."
+                        },
+                        new
+                        {
+                            PreguntaId = 33,
+                            CalificacionParcial = 3.0,
+                            CuestionarioId = 11,
+                            Descripcion = "Qué significa: 不用谢."
+                        },
+                        new
+                        {
+                            PreguntaId = 34,
+                            CalificacionParcial = 3.0,
+                            CuestionarioId = 11,
+                            Descripcion = "Qué significa: 你好."
                         });
                 });
 
@@ -952,6 +1006,125 @@ namespace Microservicio_Cuestionario.AccessData.Migrations
                             Descripcion = "Se reduce a la mitad.",
                             Flag = false,
                             PreguntaId = 28
+                        },
+                        new
+                        {
+                            RespuestaId = 85,
+                            Descripcion = "Son unas técnicas para resolver problemas comunes en el desarrollo de software.",
+                            Flag = true,
+                            PreguntaId = 29
+                        },
+                        new
+                        {
+                            RespuestaId = 86,
+                            Descripcion = "Son pasos para resolver problemas en un lenguaje específico.",
+                            Flag = false,
+                            PreguntaId = 29
+                        },
+                        new
+                        {
+                            RespuestaId = 87,
+                            Descripcion = "El patrón creacional.",
+                            Flag = false,
+                            PreguntaId = 30
+                        },
+                        new
+                        {
+                            RespuestaId = 88,
+                            Descripcion = "El patrón de comportamiento.",
+                            Flag = false,
+                            PreguntaId = 30
+                        },
+                        new
+                        {
+                            RespuestaId = 89,
+                            Descripcion = "El patrón de arquitectura.",
+                            Flag = true,
+                            PreguntaId = 30
+                        },
+                        new
+                        {
+                            RespuestaId = 90,
+                            Descripcion = "El patrón creacional.",
+                            Flag = false,
+                            PreguntaId = 31
+                        },
+                        new
+                        {
+                            RespuestaId = 91,
+                            Descripcion = "El patrón estructural.",
+                            Flag = true,
+                            PreguntaId = 31
+                        },
+                        new
+                        {
+                            RespuestaId = 92,
+                            Descripcion = "El patrón de comportamiento.",
+                            Flag = false,
+                            PreguntaId = 31
+                        },
+                        new
+                        {
+                            RespuestaId = 93,
+                            Descripcion = "Buen dia!.",
+                            Flag = false,
+                            PreguntaId = 32
+                        },
+                        new
+                        {
+                            RespuestaId = 94,
+                            Descripcion = "¡Gracias!.",
+                            Flag = true,
+                            PreguntaId = 32
+                        },
+                        new
+                        {
+                            RespuestaId = 95,
+                            Descripcion = "Hola!.",
+                            Flag = false,
+                            PreguntaId = 32
+                        },
+                        new
+                        {
+                            RespuestaId = 96,
+                            Descripcion = "!Gracias!.",
+                            Flag = false,
+                            PreguntaId = 33
+                        },
+                        new
+                        {
+                            RespuestaId = 97,
+                            Descripcion = "De nada.",
+                            Flag = true,
+                            PreguntaId = 33
+                        },
+                        new
+                        {
+                            RespuestaId = 98,
+                            Descripcion = "Hola.",
+                            Flag = false,
+                            PreguntaId = 33
+                        },
+                        new
+                        {
+                            RespuestaId = 99,
+                            Descripcion = "Muy bien.",
+                            Flag = false,
+                            PreguntaId = 34
+                        },
+                        new
+                        {
+                            RespuestaId = 100,
+                            Descripcion = "Hola.",
+                            Flag = true,
+                            PreguntaId = 34
+                        },
+                        new
+                        {
+                            RespuestaId = 101,
+                            Descripcion = "Adiós.",
+                            Flag = false,
+                            PreguntaId = 34
                         });
                 });
 

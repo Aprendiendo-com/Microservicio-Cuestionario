@@ -48,7 +48,10 @@ namespace Microservicio_Cuestionario.AccessData.Context
                     new Cuestionario { CuestionarioID = 6, Descripcion = "Completa las sentencias usando Presente Continuo", ClaseId = 6 },
                     new Cuestionario { CuestionarioID = 7, Descripcion = "Cuestionario de Campo eléctrico", ClaseId = 7 },
                     new Cuestionario { CuestionarioID = 8, Descripcion = "Cuestinario de Campo Magnético", ClaseId = 8 },
-                    new Cuestionario { CuestionarioID = 9, Descripcion = "Cuestionario de Ecuaciones de Maxwell", ClaseId = 9 }
+                    new Cuestionario { CuestionarioID = 9, Descripcion = "Cuestionario de Ecuaciones de Maxwell", ClaseId = 9 },
+                    
+                    new Cuestionario { CuestionarioID = 10, Descripcion = "Cuestionario Patrones de Diseño", ClaseId = 10 },
+                    new Cuestionario { CuestionarioID = 11, Descripcion = "Introducción al Chino Mandarin", ClaseId = 11 }
                     );
 
             }
@@ -117,8 +120,16 @@ namespace Microservicio_Cuestionario.AccessData.Context
 
                     new Pregunta { PreguntaId = 26, Descripcion = "¿A qué se conoce como ecuaciones de Maxwell?.", CuestionarioId = 9, CalificacionParcial = 4 },
                     new Pregunta { PreguntaId = 27, Descripcion = "¿Cuál de los siguientes parámetros no interviene en las ecuaciones de Maxwell?", CuestionarioId = 9, CalificacionParcial = 3 },
-                    new Pregunta { PreguntaId = 28, Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?", CuestionarioId = 9, CalificacionParcial = 3 }
+                    new Pregunta { PreguntaId = 28, Descripcion = "¿Qué sucede con el valor del Flujo si duplicamos el valor de la carga?", CuestionarioId = 9, CalificacionParcial = 3 },
 
+
+                    new Pregunta { PreguntaId = 29, Descripcion = "¿Qué es un patrón de diseño?", CuestionarioId = 10, CalificacionParcial = 2 },
+                    new Pregunta { PreguntaId = 30, Descripcion = "¿Cuál de los siguientes no es un tipo de patrón de diseño?", CuestionarioId = 10, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 31, Descripcion = "El patrón que soluciona los problemas de composición de clases y objetos es:", CuestionarioId = 10, CalificacionParcial = 4 },
+
+                    new Pregunta { PreguntaId = 32, Descripcion = "Qué significa: 谢谢!.", CuestionarioId = 11, CalificacionParcial = 4 },
+                    new Pregunta { PreguntaId = 33, Descripcion = "Qué significa: 不用谢.", CuestionarioId = 11, CalificacionParcial = 3 },
+                    new Pregunta { PreguntaId = 34, Descripcion = "Qué significa: 你好.", CuestionarioId = 11, CalificacionParcial = 3 }
 
                     );
             }
@@ -235,7 +246,27 @@ namespace Microservicio_Cuestionario.AccessData.Context
                     new Respuesta { RespuestaId = 81, Descripcion = "El campo eléctrico.", PreguntaId = 27, Flag = false },
                     new Respuesta { RespuestaId = 82, Descripcion = "Se anula.", PreguntaId = 28, Flag = false },
                     new Respuesta { RespuestaId = 83, Descripcion = "Se duplica.", PreguntaId = 28, Flag = true },
-                    new Respuesta { RespuestaId = 84, Descripcion = "Se reduce a la mitad.", PreguntaId = 28, Flag = false }
+                    new Respuesta { RespuestaId = 84, Descripcion = "Se reduce a la mitad.", PreguntaId = 28, Flag = false },
+
+
+                    new Respuesta { RespuestaId = 85, Descripcion = "Son unas técnicas para resolver problemas comunes en el desarrollo de software.", PreguntaId = 29, Flag = true },
+                    new Respuesta { RespuestaId = 86, Descripcion = "Son pasos para resolver problemas en un lenguaje específico.", PreguntaId = 29, Flag = false },
+                    new Respuesta { RespuestaId = 87, Descripcion = "El patrón creacional.", PreguntaId = 30, Flag = false },
+                    new Respuesta { RespuestaId = 88, Descripcion = "El patrón de comportamiento.", PreguntaId = 30, Flag = false },
+                    new Respuesta { RespuestaId = 89, Descripcion = "El patrón de arquitectura.", PreguntaId = 30, Flag = true },
+                    new Respuesta { RespuestaId = 90, Descripcion = "El patrón creacional.", PreguntaId = 31, Flag = false },
+                    new Respuesta { RespuestaId = 91, Descripcion = "El patrón estructural.", PreguntaId = 31, Flag = true },
+                    new Respuesta { RespuestaId = 92, Descripcion = "El patrón de comportamiento.", PreguntaId = 31, Flag = false },
+
+                    new Respuesta { RespuestaId = 93, Descripcion = "Buen dia!.", PreguntaId = 32, Flag = false },
+                    new Respuesta { RespuestaId = 94, Descripcion = "¡Gracias!.", PreguntaId = 32, Flag = true },
+                    new Respuesta { RespuestaId = 95, Descripcion = "Hola!.", PreguntaId = 32, Flag = false },
+                    new Respuesta { RespuestaId = 96, Descripcion = "!Gracias!.", PreguntaId = 33, Flag = false },
+                    new Respuesta { RespuestaId = 97, Descripcion = "De nada.", PreguntaId = 33, Flag = true },
+                    new Respuesta { RespuestaId = 98, Descripcion = "Hola.", PreguntaId = 33, Flag = false },
+                    new Respuesta { RespuestaId = 99, Descripcion = "Muy bien.", PreguntaId = 34, Flag = false },
+                    new Respuesta { RespuestaId = 100, Descripcion = "Hola.", PreguntaId = 34, Flag = true },
+                    new Respuesta { RespuestaId = 101, Descripcion = "Adiós.", PreguntaId = 34, Flag = false }
 
                     );
             }
